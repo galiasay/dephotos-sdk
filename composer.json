@@ -6,6 +6,7 @@
         "phpstan/phpstan": "^1.2"
     },
     "license": "MIT",
+    "description": "Depositphotos SDK",
     "require": {},
     "autoload": {
         "psr-4": {
