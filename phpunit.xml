@@ -1,0 +1,5 @@
+<testsuites bootstrap="vendor/autoload.php" phpVersion="7.1.0">
+    <testsuite name="SDK">
+        <directory>tests</directory>
+    </testsuite>
+</testsuites>
