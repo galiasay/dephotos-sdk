@@ -1,5 +1,5 @@
-<testsuites bootstrap="vendor/autoload.php" phpVersion="7.1.0">
-    <testsuite name="SDK">
-        <directory>tests</directory>
+<testsuites bootstrap="vendor/autoload.php">
+    <testsuite name="Depositphotos SDK Test Suite">
+        <directory>./tests/</directory>
     </testsuite>
 </testsuites>
