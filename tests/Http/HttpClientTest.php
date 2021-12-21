@@ -45,7 +45,7 @@ class HttpClientTest extends BaseTestCase
         $this->assertEquals($expectedResponse, $response);
     }
 
-    private function createRequest(): Psr7\Request
+    private function createRequest(): RequestInterface
     {
         $requestData = [
             'dp_command' => 'login',
@@ -56,7 +56,7 @@ class HttpClientTest extends BaseTestCase
         return new Psr7\Request('post', '', [], json_encode($requestData));
     }
 
-    private function createResponse(StreamInterface $body): Psr7\Response
+    private function createResponse(StreamInterface $body): ResponseInterface
     {
         return new Psr7\Response(200, [], $body);
     }
