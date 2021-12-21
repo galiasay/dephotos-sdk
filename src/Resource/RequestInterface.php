@@ -5,5 +5,8 @@ namespace Depositphotos\SDK\Resource;
 
 interface RequestInterface
 {
+    /**
+     * @return mixed[]
+     */
     public function toArray(): array;
 }

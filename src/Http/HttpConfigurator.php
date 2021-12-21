@@ -15,7 +15,7 @@ class HttpConfigurator
     /** @var string */
     private $endpoint;
 
-    /** @var ClientInterface */
+    /** @var ClientInterface|null */
     private $httpClient;
 
     public function __construct(string $apiKey, string $endpoint, ?ClientInterface $httpClient = null)

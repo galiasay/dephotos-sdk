@@ -27,9 +27,12 @@ class Resource
         return $response;
     }
 
+    /**
+     * @return mixed[]
+     */
     protected function convertHttpResponseToArray(HttpResponseInterface $httpResponse): array
     {
-        return Utils::jsonDecode((string) $httpResponse->getBody());
+        return (array) Utils::jsonDecode((string) $httpResponse->getBody());
     }
 
     private function convertToHttpRequest(RequestInterface $request): HttpRequestInterface
@@ -42,6 +45,9 @@ class Resource
         return Utils::jsonEncode($request->toArray());
     }
 
+    /**
+     * @return string[]
+     */
     private function getHeaders(): array
     {
         return [

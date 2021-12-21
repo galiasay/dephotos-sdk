@@ -11,9 +11,12 @@ use Psr\Http\Message\ResponseInterface;
 
 class RequestBodyFieldsMiddleware implements MiddlewareInterface
 {
-    /** @var array */
+    /** @var mixed[] */
     private $fields;
 
+    /**
+     * @param mixed[] $fields
+     */
     public function __construct(array $fields)
     {
         $this->fields = $fields;
@@ -21,7 +24,7 @@ class RequestBodyFieldsMiddleware implements MiddlewareInterface
 
     public function execute(RequestInterface $request, callable $next): ResponseInterface
     {
-        $fields = array_merge($this->fields, Utils::jsonDecode((string) $request->getBody(), true));
+        $fields = array_merge($this->fields, (array) Utils::jsonDecode((string) $request->getBody(), true));
 
         $request = $request->withBody(Psr7\Utils::streamFor(Utils::jsonEncode($fields)));
 
