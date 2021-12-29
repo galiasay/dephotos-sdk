@@ -36,11 +36,9 @@ class HttpClient implements ClientInterface
         return $this;
     }
 
-    /**
-     * @param MiddlewareInterface[] $middlewareList
-     */
     private function createMiddlewareChain(array $middlewareList, callable $lastCallable): callable
     {
+        /** @var MiddlewareInterface $middleware */
         foreach ($middlewareList as $middleware) {
             $lastCallable = function (RequestInterface $request) use ($middleware, $lastCallable) {
                 return $middleware->execute($request, $lastCallable);

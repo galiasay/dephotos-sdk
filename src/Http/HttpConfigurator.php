@@ -3,7 +3,8 @@ declare(strict_types=1);
 
 namespace Depositphotos\SDK\Http;
 
-use Depositphotos\SDK\Http\Middleware\RequestBodyFieldsMiddleware;
+use Depositphotos\SDK\Http\Middleware\ErrorHandler;
+use Depositphotos\SDK\Http\Middleware\RequestBodyFields;
 use Psr\Http\Client\ClientInterface;
 use GuzzleHttp\Client as GuzzleHttpClient;
 
@@ -15,7 +16,7 @@ class HttpConfigurator
     /** @var string */
     private $endpoint;
 
-    /** @var ClientInterface|null */
+    /** @var null|ClientInterface */
     private $httpClient;
 
     public function __construct(string $apiKey, string $endpoint, ?ClientInterface $httpClient = null)
@@ -31,9 +32,11 @@ class HttpConfigurator
             'base_uri' => $this->endpoint
         ]));
 
-        $configuredHttpClient->addMiddleware(new RequestBodyFieldsMiddleware([
-            'dp_apikey' => $this->apiKey,
-        ]));
+        $configuredHttpClient
+            ->addMiddleware(new ErrorHandler())
+            ->addMiddleware(new RequestBodyFields([
+                'dp_apikey' => $this->apiKey,
+            ]));
 
         return $configuredHttpClient;
     }

@@ -3,13 +3,13 @@ declare(strict_types=1);
 
 namespace Depositphotos\SDK\Tests\Http\Middleware;
 
-use Depositphotos\SDK\Http\Middleware\RequestBodyFieldsMiddleware;
+use Depositphotos\SDK\Http\Middleware\RequestBodyFields;
 use Depositphotos\SDK\Tests\BaseTestCase;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use Psr\Http\Message\RequestInterface;
 
-class RequestBodyFieldsMiddlewareTest extends BaseTestCase
+class RequestBodyFieldsTest extends BaseTestCase
 {
     public function testExecute(): void
     {
@@ -24,7 +24,7 @@ class RequestBodyFieldsMiddlewareTest extends BaseTestCase
         ];
 
         $request = new Request('post', '', [], json_encode($requestData));
-        $middleware = new RequestBodyFieldsMiddleware($newFields);
+        $middleware = new RequestBodyFields($newFields);
 
         $expectedData = array_merge($newFields, $requestData);
 
