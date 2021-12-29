@@ -10,6 +10,7 @@ use Depositphotos\SDK\Exception\InvalidApiKeyException;
 use Depositphotos\SDK\Exception\InvalidParamException;
 use Depositphotos\SDK\Exception\InvalidSessionException;
 use Depositphotos\SDK\Exception\ItemNotFoundException;
+use Depositphotos\SDK\Exception\NotAllowedValueException;
 use Depositphotos\SDK\Exception\UndefinedCommandException;
 use Depositphotos\SDK\Tests\BaseTestCase;
 use Psr\Http\Message\RequestInterface;
@@ -114,6 +115,17 @@ class ClientExceptionTest extends BaseTestCase
                     ],
                 ],
                 InternalErrorException::class,
+            ],
+            [
+                [
+                    'type' =>  'failure',
+                    'error' => [
+                        'errormsg' => 'Specified command not found',
+                        'errorcode' => 403,
+                        'exception' => 'EAPI\\EValueNotAllowed',
+                    ],
+                ],
+                NotAllowedValueException::class,
             ],
             [
                 [

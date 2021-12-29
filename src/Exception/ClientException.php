@@ -70,6 +70,9 @@ class ClientException extends Exception implements ClientExceptionInterface
             case 'EApi\EInternalError':
                 $exceptionClass = InternalErrorException::class;
                 break;
+            case 'EAPI\EValueNotAllowed':
+                $exceptionClass = NotAllowedValueException::class;
+                break;
             default:
                 $exceptionClass = self::class;
         }
