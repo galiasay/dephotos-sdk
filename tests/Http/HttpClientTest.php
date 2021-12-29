@@ -11,14 +11,13 @@ use GuzzleHttp\Utils;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\StreamInterface;
 
 class HttpClientTest extends BaseTestCase
 {
     public function testSendRequest(): void
     {
         $request = $this->createRequest();
-        $expectedResponse = $this->createResponse($request->getBody());
+        $expectedResponse = $this->createResponse(json_decode((string) $request->getBody(), true));
 
         $httpClient = $this->createHttpClient($request, $expectedResponse);
         $response = $httpClient->sendRequest($request);
@@ -35,7 +34,7 @@ class HttpClientTest extends BaseTestCase
 
         $request = $this->createRequest();
         $expectedRequest = $request->withBody(Psr7\Utils::streamFor(Utils::jsonEncode($data)));
-        $expectedResponse = $this->createResponse($expectedRequest->getBody());
+        $expectedResponse = $this->createResponse(json_decode((string) $expectedRequest->getBody(), true));
 
         $httpClient = $this->createHttpClient($expectedRequest, $expectedResponse);
         $httpClient->addMiddleware($this->createMiddleware($expectedRequest));
@@ -47,18 +46,23 @@ class HttpClientTest extends BaseTestCase
 
     private function createRequest(): RequestInterface
     {
-        $requestData = [
+        $body = [
             'dp_command' => 'login',
             'dp_login' => 'login',
             'dp_password' => 'password',
         ];
 
-        return new Psr7\Request('post', '', [], json_encode($requestData));
+        return new Psr7\Request('post', '', [], json_encode($body));
     }
 
-    private function createResponse(StreamInterface $body): ResponseInterface
+    private function createResponse(array $data): ResponseInterface
     {
-        return new Psr7\Response(200, [], $body);
+        $body = [
+            'type' => 'success',
+            'data' => $data,
+        ];
+
+        return new Psr7\Response(200, [],  json_encode($body));
     }
 
     private function createHttpClient(RequestInterface $request, ResponseInterface $response): HttpClient

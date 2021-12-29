@@ -4,19 +4,16 @@ declare(strict_types=1);
 namespace Depositphotos\SDK\Http\Middleware;
 
 use Depositphotos\SDK\Http\MiddlewareInterface;
-use GuzzleHttp\Utils;
 use GuzzleHttp\Psr7;
+use GuzzleHttp\Utils;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
-class RequestBodyFieldsMiddleware implements MiddlewareInterface
+class RequestBodyFields implements MiddlewareInterface
 {
     /** @var mixed[] */
     private $fields;
 
-    /**
-     * @param mixed[] $fields
-     */
     public function __construct(array $fields)
     {
         $this->fields = $fields;
