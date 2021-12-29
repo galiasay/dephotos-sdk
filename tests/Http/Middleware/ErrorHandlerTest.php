@@ -8,6 +8,7 @@ use Depositphotos\SDK\Http\Middleware\ErrorHandler;
 use Depositphotos\SDK\Tests\BaseTestCase;
 use GuzzleHttp\Exception\BadResponseException;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Psr7\Utils;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
@@ -45,12 +46,11 @@ class ErrorHandlerTest extends BaseTestCase
 
     public function testExecuteWithBadResponseException(): void
     {
-        $originalException = new BadResponseException(
-            'Error message',
-            $this->createMock(RequestInterface::class),
-            $this->createMock(ResponseInterface::class)
-        );
+        $request = $this->createMock(RequestInterface::class);
+        $response = $this->createMock(ResponseInterface::class);
+        $response->method('getBody')->willReturn(Utils::streamFor(json_encode([])));
 
+        $originalException = new BadResponseException('Error message', $request, $response);
         $expectedException = ClientException::create($originalException->getRequest(), $originalException->getResponse());
 
         $this->expectExceptionObject($expectedException);

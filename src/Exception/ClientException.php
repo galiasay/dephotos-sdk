@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Depositphotos\SDK\Exception;
 
+use GuzzleHttp\Utils;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -36,9 +37,9 @@ class ClientException extends Exception implements ClientExceptionInterface
         ?ResponseInterface $response = null,
         ?Throwable $previous = null
     ): self {
-        $errorData = $response
-            ? (array) (json_decode((string) $response->getBody(), true)['error'] ?? [])
-            : [];
+        $responseData = $response ? (array) Utils::jsonDecode((string) $response->getBody(), true) : [];
+
+        $errorData = $responseData['error'] ?? [];
         $errorMessage = $errorData['errormsg'] ?? self::DEFAULT_ERROR_MESSAGE;
         $errorCode = $errorData['errorcode'] ?? 0;
 

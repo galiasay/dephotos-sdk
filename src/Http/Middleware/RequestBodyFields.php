@@ -5,6 +5,7 @@ namespace Depositphotos\SDK\Http\Middleware;
 
 use Depositphotos\SDK\Http\MiddlewareInterface;
 use GuzzleHttp\Psr7;
+use GuzzleHttp\Utils;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
@@ -20,9 +21,9 @@ class RequestBodyFields implements MiddlewareInterface
 
     public function execute(RequestInterface $request, callable $next): ResponseInterface
     {
-        $fields = array_merge($this->fields, (array) json_decode((string) $request->getBody(), true));
+        $fields = array_merge($this->fields, (array) Utils::jsonDecode((string) $request->getBody(), true));
 
-        $request = $request->withBody(Psr7\Utils::streamFor((string) json_encode($fields)));
+        $request = $request->withBody(Psr7\Utils::streamFor(Utils::jsonEncode($fields)));
 
         return $next($request);
     }

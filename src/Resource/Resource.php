@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Depositphotos\SDK\Resource;
 
+use GuzzleHttp\Utils;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestInterface as HttpRequestInterface;
 use Psr\Http\Message\ResponseInterface as HttpResponseInterface;
@@ -27,7 +28,7 @@ class Resource
 
     protected function convertHttpResponseToArray(HttpResponseInterface $httpResponse): array
     {
-        return (array) json_decode((string) $httpResponse->getBody(), true);
+        return (array) Utils::jsonDecode((string) $httpResponse->getBody(), true);
     }
 
     private function convertToHttpRequest(RequestInterface $request): HttpRequestInterface

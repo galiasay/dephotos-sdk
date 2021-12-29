@@ -6,6 +6,7 @@ namespace Depositphotos\SDK\Http\Middleware;
 use Depositphotos\SDK\Exception\ClientException;
 use Depositphotos\SDK\Http\MiddlewareInterface;
 use GuzzleHttp\Exception\BadResponseException;
+use GuzzleHttp\Utils;
 use Psr\Http\Client\RequestExceptionInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -36,7 +37,7 @@ class ErrorHandler implements MiddlewareInterface
 
     private function isSuccess(ResponseInterface $response): bool
     {
-        $responseData = (array) json_decode((string) $response->getBody(), true);
+        $responseData = (array) Utils::jsonDecode((string) $response->getBody(), true);
 
         return ($responseData['type'] ?? null) === self::TYPE_SUCCESS;
     }
