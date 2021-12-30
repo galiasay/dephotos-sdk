@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Depositphotos\SDK\Resource\Generic\Response;
 
-use Depositphotos\SDK\Resource\Generic\DTO\ExceptionDTO;
+use Depositphotos\SDK\Resource\Generic\Response\DTO\ExceptionDTO;
 
 class HelpResponse
 {

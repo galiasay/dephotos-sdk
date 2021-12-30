@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Depositphotos\SDK\Resource\Generic\DTO;
+namespace Depositphotos\SDK\Resource\Generic\Response\DTO;
 
 class ExceptionDTO
 {

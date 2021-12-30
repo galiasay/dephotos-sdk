@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Depositphotos\SDK\Tests\Resource\Generic;
 
-use Depositphotos\SDK\Resource\Generic\DTO\ExceptionDTO;
+use Depositphotos\SDK\Resource\Generic\Response\DTO\ExceptionDTO;
 use Depositphotos\SDK\Resource\Generic\Generic;
 use Depositphotos\SDK\Resource\Generic\Request\GetInfoRequest;
 use Depositphotos\SDK\Resource\Generic\Request\HelpRequest;
