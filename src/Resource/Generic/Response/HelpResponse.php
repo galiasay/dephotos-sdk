@@ -17,30 +17,33 @@ class HelpResponse
     private $longDescription;
 
     /** @var ExceptionDTO[] */
-    private $exceptions;
+    private $exceptions = [];
 
     public function __construct(string $method, string $description, string $longDescription, array $exceptions)
     {
         $this->method = $method;
         $this->description = $description;
         $this->longDescription = $longDescription;
-
-        foreach ($exceptions as $exception) {
-            $type = (string) ($exception['type'] ?? '');
-
-            if ($type) {
-                $this->addException($type, (string) ($exception['description'] ?? ''));
-            }
-        }
+        $this->addExceptions($exceptions);
     }
 
     public static function create(array $data): self
     {
+        $exceptions = [];
+
+        foreach ((array) ($data['help']['exception'] ?? []) as $exception) {
+            $type = (string) ($exception['type'] ?? '');
+
+            if ($type) {
+                $exceptions[] = new ExceptionDTO($type, (string) ($exception['description'] ?? ''));
+            }
+        }
+
         return new self(
             (string) ($data['help']['method'] ?? ''),
             (string) ($data['help']['description'] ?? ''),
             (string) ($data['help']['longDescription'] ?? ''),
-            (array) ($data['help']['exception'] ?? [])
+            $exceptions
         );
     }
 
@@ -67,9 +70,19 @@ class HelpResponse
         return $this->exceptions;
     }
 
-    private function addException(string $type, string $description): self
+    /**
+     * @param ExceptionDTO[] $exceptions
+     */
+    private function addExceptions(array $exceptions): void
     {
-        $this->exceptions[] = new ExceptionDTO($type, $description);
+        foreach ($exceptions as $exception) {
+            $this->addException($exception);
+        }
+    }
+
+    private function addException(ExceptionDTO $exception): self
+    {
+        $this->exceptions[] = $exception;
 
         return $this;
     }
