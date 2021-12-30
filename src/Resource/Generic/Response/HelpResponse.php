@@ -26,7 +26,11 @@ class HelpResponse
         $this->longDescription = $longDescription;
 
         foreach ($exceptions as $exception) {
-            $this->addException($exception['type'] ?? '', $exception['description'] ?? '');
+            $type = (string) ($exception['type'] ?? '');
+
+            if ($type) {
+                $this->addException($type, (string) ($exception['description'] ?? ''));
+            }
         }
     }
 
