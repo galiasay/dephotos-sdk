@@ -131,7 +131,7 @@ class UserResourceTest extends BaseTestCase
             'data' => [
                 'sessionid' => '21d6f40cfb511982e4424e0e250a9557',
                 'session_cookie' => '2dccd1ab3e03990aea77359831c85ca2',
-                'userId' => 123,
+                'userid' => 123,
             ],
         ];
 
@@ -140,7 +140,7 @@ class UserResourceTest extends BaseTestCase
 
         $this->assertEquals($responseData['data']['sessionid'], $result->getSessionId());
         $this->assertEquals($responseData['data']['session_cookie'], $result->getSessionCookie());
-        $this->assertEquals($responseData['data']['userId'], $result->getUserId());
+        $this->assertEquals($responseData['data']['userid'], $result->getUserId());
     }
 
     public function testRegisterNewUser(): void

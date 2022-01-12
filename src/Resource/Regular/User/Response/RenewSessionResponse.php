@@ -26,7 +26,7 @@ class RenewSessionResponse
         return new self(
             (string) ($data['data']['sessionid'] ?? ''),
             (string) ($data['data']['session_cookie'] ?? ''),
-            (int) ($data['data']['userId'] ?? 0)
+            (int) ($data['data']['userid'] ?? 0)
         );
     }
 

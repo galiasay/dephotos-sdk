@@ -15,7 +15,7 @@ class RegisterNewUserResponse
 
     public static function create(array $data): self
     {
-        return new self((int) ($data['userid'] ?? ''));
+        return new self((int) ($data['userid'] ?? 0));
     }
 
     public function getUserId(): int
