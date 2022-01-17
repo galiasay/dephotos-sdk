@@ -23,21 +23,21 @@ class UserResource extends Resource
     {
         $httpResponse = $this->send($request);
 
-        return LoginResponse::create($this->convertHttpResponseToArray($httpResponse));
+        return new LoginResponse($this->convertHttpResponseToArray($httpResponse));
     }
 
     public function loginByToken(LoginByTokenRequest $request): LoginByTokenResponse
     {
         $httpResponse = $this->send($request);
 
-        return LoginByTokenResponse::create($this->convertHttpResponseToArray($httpResponse));
+        return new LoginByTokenResponse($this->convertHttpResponseToArray($httpResponse));
     }
 
     public function loginAsUser(LoginAsUserRequest $request): LoginAsUserResponse
     {
         $httpResponse = $this->send($request);
 
-        return LoginAsUserResponse::create($this->convertHttpResponseToArray($httpResponse));
+        return new LoginAsUserResponse($this->convertHttpResponseToArray($httpResponse));
     }
 
     public function logout(LogoutRequest $request): void
@@ -54,13 +54,13 @@ class UserResource extends Resource
     {
         $httpResponse = $this->send($request);
 
-        return RegisterNewUserResponse::create($this->convertHttpResponseToArray($httpResponse));
+        return new RegisterNewUserResponse($this->convertHttpResponseToArray($httpResponse));
     }
 
     public function renewSession(RenewSessionRequest $request): RenewSessionResponse
     {
         $httpResponse = $this->send($request);
 
-        return RenewSessionResponse::create($this->convertHttpResponseToArray($httpResponse));
+        return new RenewSessionResponse($this->convertHttpResponseToArray($httpResponse)['data'] ?? []);
     }
 }

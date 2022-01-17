@@ -3,45 +3,22 @@ declare(strict_types=1);
 
 namespace Depositphotos\SDK\Resource\Regular\User\Response;
 
-class LoginAsUserResponse
+use Depositphotos\SDK\Resource\ResponseObject;
+
+class LoginAsUserResponse extends ResponseObject
 {
-    /** @var string */
-    private $sessionId;
-
-    /** @var string */
-    private $sessionCookie;
-
-    /** @var int */
-    private $userId;
-
-    public function __construct(string $sessionId, string $sessionCookie, int $userId)
-    {
-        $this->sessionId = $sessionId;
-        $this->sessionCookie = $sessionCookie;
-        $this->userId = $userId;
-    }
-
-    public static function create(array $data): self
-    {
-        return new self(
-            (string) ($data['sessionid'] ?? ''),
-            (string) ($data['session_cookie'] ?? ''),
-            (int) ($data['userid'] ?? 0)
-        );
-    }
-
     public function getSessionId(): string
     {
-        return $this->sessionId;
+        return (string) $this->getProperty('sessionid');
     }
 
     public function getSessionCookie(): string
     {
-        return $this->sessionCookie;
+        return (string) $this->getProperty('session_cookie');
     }
 
     public function getUserId(): int
     {
-        return $this->userId;
+        return (int) $this->getProperty('userid');
     }
 }

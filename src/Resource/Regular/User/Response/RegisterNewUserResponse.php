@@ -3,23 +3,12 @@ declare(strict_types=1);
 
 namespace Depositphotos\SDK\Resource\Regular\User\Response;
 
-class RegisterNewUserResponse
+use Depositphotos\SDK\Resource\ResponseObject;
+
+class RegisterNewUserResponse extends ResponseObject
 {
-    /** @var int */
-    private $userId;
-
-    public function __construct(int $userId)
-    {
-        $this->userId = $userId;
-    }
-
-    public static function create(array $data): self
-    {
-        return new self((int) ($data['userid'] ?? 0));
-    }
-
     public function getUserId(): int
     {
-        return $this->userId;
+        return (int) $this->getProperty('userid');
     }
 }
