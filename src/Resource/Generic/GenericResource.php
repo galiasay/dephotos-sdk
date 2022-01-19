@@ -9,7 +9,7 @@ use Depositphotos\SDK\Resource\Generic\Response\GetInfoResponse;
 use Depositphotos\SDK\Resource\Generic\Response\HelpResponse;
 use Depositphotos\SDK\Resource\Resource;
 
-class Generic extends Resource
+class GenericResource extends Resource
 {
     public function getInfo(GetInfoRequest $request): GetInfoResponse
     {

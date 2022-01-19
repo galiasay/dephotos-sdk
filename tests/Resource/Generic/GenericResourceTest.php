@@ -4,13 +4,13 @@ declare(strict_types=1);
 namespace Depositphotos\SDK\Tests\Resource\Generic;
 
 use Depositphotos\SDK\Resource\Generic\Response\DTO\ExceptionDTO;
-use Depositphotos\SDK\Resource\Generic\Generic;
+use Depositphotos\SDK\Resource\Generic\GenericResource;
 use Depositphotos\SDK\Resource\Generic\Request\GetInfoRequest;
 use Depositphotos\SDK\Resource\Generic\Request\HelpRequest;
 use Depositphotos\SDK\Tests\BaseTestCase;
 use Depositphotos\SDK\Tests\Resource\ResourceTrait;
 
-class GenericTest extends BaseTestCase
+class GenericResourceTest extends BaseTestCase
 {
     use ResourceTrait;
 
@@ -26,7 +26,7 @@ class GenericTest extends BaseTestCase
             'totalWeekFiles' => rand(100, 1000),
         ];
 
-        $resource = new Generic($this->createHttpClient($requestData, $responseData));
+        $resource = new GenericResource($this->createHttpClient($requestData, $responseData));
         $result = $resource->getInfo(new GetInfoRequest());
 
         $this->assertEquals($responseData['totalFiles'], $result->getTotalFiles());
@@ -59,7 +59,7 @@ class GenericTest extends BaseTestCase
             ],
         ];
 
-        $resource = new Generic($this->createHttpClient($requestData, $responseData));
+        $resource = new GenericResource($this->createHttpClient($requestData, $responseData));
         $result = $resource->help(new HelpRequest($requestData['dp_by_command']));
 
         $this->assertEquals($responseData['help']['method'], $result->getMethod());
