@@ -110,86 +110,68 @@ class GetUserDataResponse extends ResponseObject
 
     public function getWebsite(): ?string
     {
-        $website = $this->getProperty('website');
-
-        return $website !== null ? (string) $website : null;
+        return $this->getProperty('website');
     }
 
     public function getBiography(): ?string
     {
-        $biography = $this->getProperty('biography');
-
-        return $biography !== null ? (string) $biography : null;
+        return $this->getProperty('biography');
     }
 
     public function getBusinessPhone(): ?string
     {
-        $businessPhone = $this->getProperty('businessPhone');
-
-        return $businessPhone !== null ? (string) $businessPhone : null;
+        return $this->getProperty('businessPhone');
     }
 
     public function getCreditsAmount(): ?float
     {
         $creditsAmount = $this->getProperty('creditsAmount');
 
-        return $creditsAmount !== null ? (float) $creditsAmount : null;
+        return is_numeric($creditsAmount) ? (float) $creditsAmount : null;
     }
 
     public function getFilesAmount(): ?int
     {
         $filesAmount = $this->getProperty('filesAmount');
 
-        return $filesAmount !== null ? (int) $filesAmount : null;
+        return is_numeric($filesAmount) ? (int) $filesAmount : null;
     }
 
     public function getInvoiceAmount(): ?int
     {
         $invoiceAmount = $this->getProperty('invoiceAmount');
 
-        return $invoiceAmount !== null ? (int) $invoiceAmount : null;
+        return is_numeric($invoiceAmount) ? (int) $invoiceAmount : null;
     }
 
     public function getOccupation(): ?string
     {
-        $occupation = $this->getProperty('occupation');
-
-        return $occupation !== null ? (string) $occupation : null;
+        return $this->getProperty('occupation');
     }
 
     public function getVatNumber(): ?string
     {
-        $vatNumber = $this->getProperty('vatNumber');
-
-        return $vatNumber !== null ? (string) $vatNumber : null;
+        return $this->getProperty('vatNumber');
     }
 
     public function getIndustry(): ?string
     {
-        $industry = $this->getProperty('industry');
-
-        return $industry !== null ? (string) $industry : null;
+        return $this->getProperty('industry');
     }
 
     public function getEquipment(): ?string
     {
-        $equipment = $this->getProperty('equipment');
-
-        return $equipment !== null ? (string) $equipment : null;
+        return $this->getProperty('equipment');
     }
 
     public function getNotifySales(): ?string
     {
-        $notifySales = $this->getProperty('notifySales');
-
-        return $notifySales !== null ? (string) $notifySales : null;
+        return $this->getProperty('notifySales');
     }
 
     public function getNotifySelection(): ?string
     {
-        $notifySelection = $this->getProperty('notifySelection');
-
-        return $notifySelection !== null ? (string) $notifySelection : null;
+        return $this->getProperty('notifySelection');
     }
 
     /**
