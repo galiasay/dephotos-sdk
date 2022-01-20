@@ -477,7 +477,7 @@ class UserResourceTest extends BaseTestCase
             'businessName' => '',
             'avatar' => 'https://depositphotos.com/....jpg',
             'biography' => null,
-            'businessPhone' => 111222333,
+            'businessPhone' => '111222333',
             'company' => 'Company inc',
             'creditsAmount' => '87.00',
             'filesAmount' => 61,
