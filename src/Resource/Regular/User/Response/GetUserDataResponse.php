@@ -93,19 +93,19 @@ class GetUserDataResponse extends ResponseObject
         return (string) $this->getProperty('news');
     }
 
-    public function getBusinessName(): string
+    public function getBusinessName(): ?string
     {
-        return (string) $this->getProperty('businessName');
+        return $this->getProperty('businessName');
     }
 
-    public function getCompany(): string
+    public function getCompany(): ?string
     {
-        return (string) $this->getProperty('company');
+        return $this->getProperty('company');
     }
 
-    public function getAvatar(): string
+    public function getAvatar(): ?string
     {
-        return (string) $this->getProperty('avatar');
+        return $this->getProperty('avatar');
     }
 
     public function getWebsite(): ?string
