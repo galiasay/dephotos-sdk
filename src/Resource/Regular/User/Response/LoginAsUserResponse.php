@@ -12,11 +12,6 @@ class LoginAsUserResponse extends ResponseObject
         return (string) $this->getProperty('sessionid');
     }
 
-    public function getSessionCookie(): string
-    {
-        return (string) $this->getProperty('session_cookie');
-    }
-
     public function getUserId(): int
     {
         return (int) $this->getProperty('userid');

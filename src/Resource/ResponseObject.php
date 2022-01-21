@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Depositphotos\SDK\Resource;
 
-use Depositphotos\SDK\Exception\Exception;
+use Depositphotos\SDK\Exception\Exception as SDKException;
 
 class ResponseObject
 {
@@ -21,7 +21,7 @@ class ResponseObject
             return new $class($this->data);
         }
 
-        throw new Exception('Cannot cast to an object');
+        throw new SDKException('Cannot cast to an object');
     }
 
     /**
@@ -42,6 +42,36 @@ class ResponseObject
         }
 
         return $value;
+    }
+
+    protected function getDateTime(string $name): \DateTimeInterface
+    {
+        $dateTime = $this->getDateTimeOrNull($name);
+
+        if ($dateTime) {
+            return $dateTime;
+        }
+
+        throw new SDKException(sprintf('Сannot create DateTime object for "%s" field', $name));
+    }
+
+    protected function getDateTimeOrNull(string $name): ?\DateTimeInterface
+    {
+        $value = $this->data[$name] ?? null;
+
+        if (is_numeric($value)) {
+            return (new \DateTime())->setTimestamp((int) $value);
+        }
+
+        if ($value) {
+            try {
+                return new \DateTime((string)$value);
+            } catch (\Exception $e) {
+
+            }
+        }
+
+        return null;
     }
 
     private function isList(array $data): bool
