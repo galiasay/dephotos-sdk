@@ -25,6 +25,8 @@ class UserResourceTest extends BaseTestCase
 {
     use ResourceTrait;
 
+    private const DATE_FORMAT = 'M.d, Y H:i:s';
+
     public function testLogin(): void
     {
         $requestData = [
@@ -334,6 +336,7 @@ class UserResourceTest extends BaseTestCase
                     'dateBegin' => 'Sep.02, 2014 13:15:00',
                     'dateEnd' => 'Sep.17, 2015 13:15:00',
                     'amount' => '5',
+                    'count' => 3,
                     'period' => '365',
                     'buyPeriod' => 1,
                     'renewalTime' => 'Sep.17, 2015 13:15:00',
@@ -369,12 +372,13 @@ class UserResourceTest extends BaseTestCase
                 'name' => $subscription->getName(),
                 'status' => $subscription->getStatus(),
                 'purchaseMethod' => $subscription->getPurchaseMethod(),
-                'dateBegin' => $subscription->getDateBegin(),
-                'dateEnd' => $subscription->getDateEnd(),
+                'dateBegin' => $subscription->getBeginDate()->format(self::DATE_FORMAT),
+                'dateEnd' => $subscription->getEndDate()->format(self::DATE_FORMAT),
                 'amount' => $subscription->getAmount(),
                 'period' => $subscription->getPeriod(),
                 'buyPeriod' => $subscription->getBuyPeriod(),
-                'renewalTime' => $subscription->getRenewalTime(),
+                'renewalTime' => $subscription->getRenewalTime()->format(self::DATE_FORMAT),
+                'count' => $subscription->getBalance(),
             ]);
         }
 
@@ -383,7 +387,7 @@ class UserResourceTest extends BaseTestCase
                 'balance' => $onDemand->getBalance(),
                 'product' => $onDemand->getProduct(),
                 'subproduct' => $onDemand->getSubProduct(),
-                'expire' => $onDemand->getExpire(),
+                'expire' => $onDemand->getExpire()->format(self::DATE_FORMAT),
             ]);
         }
     }
@@ -547,8 +551,8 @@ class UserResourceTest extends BaseTestCase
                 'name' => $subscription->getName(),
                 'status' => $subscription->getStatus(),
                 'purchaseMethod' => $subscription->getPurchaseMethod(),
-                'dateBegin' => $subscription->getDateBegin(),
-                'dateEnd' => $subscription->getDateEnd(),
+                'dateBegin' => $subscription->getDateBegin()->format(self::DATE_FORMAT),
+                'dateEnd' => $subscription->getDateEnd()->format(self::DATE_FORMAT),
                 'period' => $subscription->getPeriod(),
                 'amount' => $subscription->getAmount(),
             ]);

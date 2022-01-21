@@ -32,14 +32,14 @@ class Subscription extends ResponseObject
         return (string) $this->getProperty('purchaseMethod');
     }
 
-    public function getDateBegin(): string
+    public function getBeginDate(): \DateTimeInterface
     {
-        return (string) $this->getProperty('dateBegin');
+        return $this->getDateTime('dateBegin');
     }
 
-    public function getDateEnd(): string
+    public function getEndDate(): \DateTimeInterface
     {
-        return (string) $this->getProperty('dateEnd');
+        return $this->getDateTime('dateEnd');
     }
 
     public function getAmount(): int
@@ -57,17 +57,17 @@ class Subscription extends ResponseObject
         return (int) $this->getProperty('buyPeriod');
     }
 
-    public function getRenewalTime(): string
+    public function getRenewalTime(): \DateTimeInterface
     {
-        return (string) $this->getProperty('renewalTime');
+        return $this->getDateTime('renewalTime');
     }
 
-    public function getMembership(): string
+    public function isMembership(): bool
     {
-        return (string) $this->getProperty('membership');
+        return (bool) $this->getProperty('membership');
     }
 
-    public function getCount(): int
+    public function getBalance(): int
     {
         return (int) $this->getProperty('count');
     }

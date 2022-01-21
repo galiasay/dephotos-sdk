@@ -22,8 +22,8 @@ class OnDemand extends ResponseObject
         return (string) $this->getProperty('subproduct');
     }
 
-    public function getExpire(): string
+    public function getExpire(): \DateTimeInterface
     {
-        return (string) $this->getProperty('expire');
+        return $this->getDateTime('expire');
     }
 }

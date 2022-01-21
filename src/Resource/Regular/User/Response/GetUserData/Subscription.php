@@ -22,14 +22,14 @@ class Subscription extends ResponseObject
         return (string) $this->getProperty('purchaseMethod');
     }
 
-    public function getDateBegin(): string
+    public function getDateBegin(): \DateTimeInterface
     {
-        return (string) $this->getProperty('dateBegin');
+        return $this->getDateTime('dateBegin');
     }
 
-    public function getDateEnd(): string
+    public function getDateEnd(): \DateTimeInterface
     {
-        return (string) $this->getProperty('dateEnd');
+        return $this->getDateTime('dateEnd');
     }
 
     public function getPeriod(): int
