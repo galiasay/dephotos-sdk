@@ -551,8 +551,8 @@ class UserResourceTest extends BaseTestCase
                 'name' => $subscription->getName(),
                 'status' => $subscription->getStatus(),
                 'purchaseMethod' => $subscription->getPurchaseMethod(),
-                'dateBegin' => $subscription->getDateBegin()->format(self::DATE_FORMAT),
-                'dateEnd' => $subscription->getDateEnd()->format(self::DATE_FORMAT),
+                'dateBegin' => $subscription->getBeginDate()->format(self::DATE_FORMAT),
+                'dateEnd' => $subscription->getEndDate()->format(self::DATE_FORMAT),
                 'period' => $subscription->getPeriod(),
                 'amount' => $subscription->getAmount(),
             ]);
