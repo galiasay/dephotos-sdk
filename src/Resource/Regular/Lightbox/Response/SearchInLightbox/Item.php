@@ -32,7 +32,7 @@ class Item extends BaseItem
         return (bool) $this->getProperty('blocked');
     }
 
-    public function getUploadDate(): \DateTimeInterface
+    public function getUploaded(): \DateTimeInterface
     {
         return $this->getDateTime('upload_timestamp');
     }
