@@ -78,9 +78,11 @@ class SearchInLightboxRequest implements RequestInterface
         return $this->photo;
     }
 
-    public function setPhoto(?bool $photo): void
+    public function setPhoto(?bool $photo): self
     {
         $this->photo = $photo;
+
+        return $this;
     }
 
     public function getVector(): ?bool
@@ -88,9 +90,11 @@ class SearchInLightboxRequest implements RequestInterface
         return $this->vector;
     }
 
-    public function setVector(?bool $vector): void
+    public function setVector(?bool $vector): self
     {
         $this->vector = $vector;
+
+        return $this;
     }
 
     public function getVideo(): ?bool
@@ -98,9 +102,11 @@ class SearchInLightboxRequest implements RequestInterface
         return $this->video;
     }
 
-    public function setVideo(?bool $video): void
+    public function setVideo(?bool $video): self
     {
         $this->video = $video;
+
+        return $this;
     }
 
     public function getAudio(): ?bool
@@ -108,9 +114,11 @@ class SearchInLightboxRequest implements RequestInterface
         return $this->audio;
     }
 
-    public function setAudio(?bool $audio): void
+    public function setAudio(?bool $audio): self
     {
         $this->audio = $audio;
+
+        return $this;
     }
 
     public function getEditorial(): ?bool
@@ -118,9 +126,11 @@ class SearchInLightboxRequest implements RequestInterface
         return $this->editorial;
     }
 
-    public function setEditorial(?bool $editorial): void
+    public function setEditorial(?bool $editorial): self
     {
         $this->editorial = $editorial;
+
+        return $this;
     }
 
     public function toArray(): array
