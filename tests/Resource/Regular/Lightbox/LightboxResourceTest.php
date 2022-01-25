@@ -446,7 +446,7 @@ class LightboxResourceTest extends BaseTestCase
             $this->assertEquals($responseData['result'][$key]['nudity'], $item->isNudity());
             $this->assertEquals($responseData['result'][$key]['isFreeItem'], $item->isFree());
             $this->assertEquals($responseData['result'][$key]['blocked'], $item->isBlocked());
-            $this->assertEquals($responseData['result'][$key]['upload_timestamp'], $item->getUploadDate()->getTimestamp());
+            $this->assertEquals($responseData['result'][$key]['upload_timestamp'], $item->getUploaded()->getTimestamp());
             $this->assertEquals($responseData['result'][$key]['original_filesize'], $item->getOriginalFilesize());
             $this->assertEquals($responseData['result'][$key]['original_extension'], $item->getOriginalExtension());
             $this->assertEquals($responseData['result'][$key]['tags'], $item->getTags());
