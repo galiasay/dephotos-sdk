@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Depositphotos\SDK;
 
 use Depositphotos\SDK\Resource\Generic\GenericResource;
+use Depositphotos\SDK\Resource\Regular\Lightbox\LightboxResource;
 use Depositphotos\SDK\Resource\Regular\User\UserResource;
 
 class RegularClient extends Client
@@ -16,5 +17,10 @@ class RegularClient extends Client
     public function user(): UserResource
     {
         return new UserResource($this->httpClient);
+    }
+
+    public function lightbox(): LightboxResource
+    {
+        return new LightboxResource($this->httpClient);
     }
 }
