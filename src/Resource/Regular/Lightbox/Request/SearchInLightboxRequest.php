@@ -25,19 +25,19 @@ class SearchInLightboxRequest implements RequestInterface
     private $hash;
 
     /** @var null|bool */
-    private $searchPhoto;
+    private $photo;
 
     /** @var null|bool */
-    private $searchVector;
+    private $vector;
 
     /** @var null|bool */
-    private $searchVideo;
+    private $video;
 
     /** @var null|bool */
-    private $searchAudio;
+    private $audio;
 
     /** @var null|bool */
-    private $searchEditorial;
+    private $editorial;
 
     public function __construct(int $lightboxId, int $limit, int $offset, ?string $query = null, ?string $hash = null)
     {
@@ -73,54 +73,54 @@ class SearchInLightboxRequest implements RequestInterface
         return $this->hash;
     }
 
-    public function getSearchPhoto(): ?bool
+    public function getPhoto(): ?bool
     {
-        return $this->searchPhoto;
+        return $this->photo;
     }
 
-    public function setSearchPhoto(?bool $searchPhoto): void
+    public function setPhoto(?bool $photo): void
     {
-        $this->searchPhoto = $searchPhoto;
+        $this->photo = $photo;
     }
 
-    public function getSearchVector(): ?bool
+    public function getVector(): ?bool
     {
-        return $this->searchVector;
+        return $this->vector;
     }
 
-    public function setSearchVector(?bool $searchVector): void
+    public function setVector(?bool $vector): void
     {
-        $this->searchVector = $searchVector;
+        $this->vector = $vector;
     }
 
-    public function getSearchVideo(): ?bool
+    public function getVideo(): ?bool
     {
-        return $this->searchVideo;
+        return $this->video;
     }
 
-    public function setSearchVideo(?bool $searchVideo): void
+    public function setVideo(?bool $video): void
     {
-        $this->searchVideo = $searchVideo;
+        $this->video = $video;
     }
 
-    public function getSearchAudio(): ?bool
+    public function getAudio(): ?bool
     {
-        return $this->searchAudio;
+        return $this->audio;
     }
 
-    public function setSearchAudio(?bool $searchAudio): void
+    public function setAudio(?bool $audio): void
     {
-        $this->searchAudio = $searchAudio;
+        $this->audio = $audio;
     }
 
-    public function getSearchEditorial(): ?bool
+    public function getEditorial(): ?bool
     {
-        return $this->searchEditorial;
+        return $this->editorial;
     }
 
-    public function setSearchEditorial(?bool $searchEditorial): void
+    public function setEditorial(?bool $editorial): void
     {
-        $this->searchEditorial = $searchEditorial;
+        $this->editorial = $editorial;
     }
 
     public function toArray(): array
@@ -132,11 +132,11 @@ class SearchInLightboxRequest implements RequestInterface
             'dp_lightbox_id' => $this->getLightboxId(),
             'dp_query' => $this->getQuery(),
             'dp_search_hash' => $this->getHash(),
-            'dp_search_photo' => $this->getSearchPhoto(),
-            'dp_search_vector' => $this->getSearchVector(),
-            'dp_search_video' => $this->getSearchVideo(),
-            'dp_search_audio' => $this->getSearchAudio(),
-            'dp_search_editorial' => $this->getSearchEditorial(),
+            'dp_search_photo' => $this->getPhoto(),
+            'dp_search_vector' => $this->getVector(),
+            'dp_search_video' => $this->getVideo(),
+            'dp_search_audio' => $this->getAudio(),
+            'dp_search_editorial' => $this->getEditorial(),
         ];
     }
 }
