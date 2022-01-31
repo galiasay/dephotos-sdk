@@ -23,13 +23,15 @@ class RequestBodyFieldsTest extends BaseTestCase
             'dp_apikey' => uniqid(),
         ];
 
-        $request = new Request('post', '', [], json_encode($requestData));
+        $request = new Request('post', '', [
+            'Content-Type' => 'application/x-www-form-urlencoded',
+        ], http_build_query($requestData));
         $middleware = new RequestBodyFields($newFields);
 
         $expectedData = array_merge($newFields, $requestData);
 
         $middleware->execute($request, function (RequestInterface $request) use ($expectedData) {
-            $this->assertEquals($expectedData, json_decode((string) $request->getBody(), true));
+            $this->assertEquals(http_build_query($expectedData), (string) $request->getBody());
             return new Response();
         });
     }
