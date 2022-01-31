@@ -5,6 +5,7 @@ namespace Depositphotos\SDK;
 
 use Depositphotos\SDK\Resource\Generic\GenericResource;
 use Depositphotos\SDK\Resource\Regular\Item\ItemResource;
+use Depositphotos\SDK\Resource\Regular\Legals\LegalsResource;
 use Depositphotos\SDK\Resource\Regular\User\UserResource;
 
 class RegularClient extends Client
@@ -22,5 +23,10 @@ class RegularClient extends Client
     public function item(): ItemResource
     {
         return new ItemResource($this->httpClient);
+    }
+
+    public function legals(): LegalsResource
+    {
+        return new LegalsResource($this->httpClient);
     }
 }

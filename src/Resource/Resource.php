@@ -21,7 +21,7 @@ class Resource
 
     protected function send(RequestInterface $request): HttpResponseInterface
     {
-        $httpRequest = $this->convertToHttpRequest($request);
+        $httpRequest = $this->prepareHttpRequest($request);
 
         return $this->httpClient->sendRequest($httpRequest);
     }
@@ -31,20 +31,15 @@ class Resource
         return (array) Utils::jsonDecode((string) $httpResponse->getBody(), true);
     }
 
-    private function convertToHttpRequest(RequestInterface $request): HttpRequestInterface
+    private function prepareHttpRequest(RequestInterface $request): HttpRequestInterface
     {
-        return new HttpRequest('POST', '', $this->getHeaders(), $this->prepareBody($request));
-    }
+        $body = http_build_query($request->toArray());
 
-    private function prepareBody(RequestInterface $request): string
-    {
-        return (string) json_encode($request->toArray());
-    }
-
-    private function getHeaders(): array
-    {
-        return [
-            'Content-Type' => 'application/json',
+        $headers = [
+            'Content-Type' => 'application/x-www-form-urlencoded',
+            'Content-Length' => (string) strlen($body),
         ];
+
+        return new HttpRequest('POST', '', $headers, $body);
     }
 }
