@@ -25,4 +25,9 @@ class Client
     {
         return new EnterpriseClient(new HttpConfigurator($apiKey, $endpoint));
     }
+
+    public static function createCorporateClient(string $apiKey, string $endpoint): CorporateClient
+    {
+        return new CorporateClient(new HttpConfigurator($apiKey, $endpoint));
+    }
 }
