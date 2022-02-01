@@ -37,7 +37,6 @@ class Resource
 
         $headers = [
             'Content-Type' => 'application/x-www-form-urlencoded',
-            'Content-Length' => (string) strlen($body),
         ];
 
         return new HttpRequest('POST', '', $headers, $body);
