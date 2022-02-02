@@ -27,11 +27,11 @@ class ErrorHandler implements MiddlewareInterface
 
             throw ClientException::create($request, $response);
         } catch (BadResponseException $e) {
-            throw ClientException::create($e->getRequest(), $e->getResponse(), $e->getPrevious());
+            throw ClientException::create($e->getRequest(), $e->getResponse(), $e);
         } catch (RequestExceptionInterface $e) {
-            throw ClientException::create($e->getRequest(), null, $e->getPrevious());
+            throw ClientException::create($e->getRequest(), null, $e);
         } catch (Exception $e) {
-            throw ClientException::create($request, null, $e->getPrevious());
+            throw ClientException::create($request, null, $e);
         }
     }
 

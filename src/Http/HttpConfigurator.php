@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace Depositphotos\SDK\Http;
 
 use Depositphotos\SDK\Http\Middleware\ErrorHandler;
-use Depositphotos\SDK\Http\Middleware\RequestBodyFields;
+use Depositphotos\SDK\Http\Middleware\QueryParams;
 use Psr\Http\Client\ClientInterface;
 use GuzzleHttp\Client as GuzzleHttpClient;
 
@@ -34,7 +34,7 @@ class HttpConfigurator
 
         $configuredHttpClient
             ->addMiddleware(new ErrorHandler())
-            ->addMiddleware(new RequestBodyFields([
+            ->addMiddleware(new QueryParams([
                 'dp_apikey' => $this->apiKey,
             ]));
 

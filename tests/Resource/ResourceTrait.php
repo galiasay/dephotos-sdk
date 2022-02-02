@@ -18,7 +18,7 @@ trait ResourceTrait
 
         $client = $this->createMock(ClientInterface::class);
         $client->method('sendRequest')->with($this->callback(function (RequestInterface $request) use ($requestData) {
-            $this->assertEquals((string) $request->getBody(), json_encode($requestData));
+            $this->assertEquals((string) $request->getBody(), http_build_query($requestData));
            return true;
         }))->willReturn($response);
 
