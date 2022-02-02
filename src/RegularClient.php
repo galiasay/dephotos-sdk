@@ -8,6 +8,7 @@ use Depositphotos\SDK\Resource\Regular\Item\ItemResource;
 use Depositphotos\SDK\Resource\Regular\Lightbox\LightboxResource;
 use Depositphotos\SDK\Resource\Regular\Legals\LegalsResource;
 use Depositphotos\SDK\Resource\Regular\Purchase\PurchaseResource;
+use Depositphotos\SDK\Resource\Regular\Tools\ToolsResource;
 use Depositphotos\SDK\Resource\Regular\User\UserResource;
 
 class RegularClient extends Client
@@ -40,5 +41,10 @@ class RegularClient extends Client
     public function lightbox(): LightboxResource
     {
         return new LightboxResource($this->httpClient);
+    }
+
+    public function tools(): ToolsResource
+    {
+        return new ToolsResource($this->httpClient);
     }
 }
