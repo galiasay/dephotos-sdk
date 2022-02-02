@@ -144,7 +144,7 @@ class PurchaseResourceTest extends BaseTestCase
         $this->assertEquals($responseData['count'], $result->getCount());
 
         foreach ($result->getPurchases() as $key => $item) {
-            $this->assertEquals($responseData['purchases'][$key]['mediaId'], $item->getMediaId());
+            $this->assertEquals($responseData['purchases'][$key]['mediaId'], $item->getId());
             $this->assertEquals($responseData['purchases'][$key]['license'], $item->getLicense());
             $this->assertEquals($responseData['purchases'][$key]['size'], $item->getSize());
             $this->assertEquals($responseData['purchases'][$key]['price'], $item->getPrice());

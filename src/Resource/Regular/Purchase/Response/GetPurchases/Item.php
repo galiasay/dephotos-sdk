@@ -7,7 +7,7 @@ use Depositphotos\SDK\Resource\ResponseObject;
 
 class Item extends ResponseObject
 {
-    public function getMediaId(): int
+    public function getId(): int
     {
         return (int) $this->getProperty('mediaId');
     }
