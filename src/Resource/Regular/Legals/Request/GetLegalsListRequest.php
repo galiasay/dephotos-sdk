@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace Depositphotos\SDK\Resource\Regular\Legals\Request;
 
-
 use Depositphotos\SDK\Resource\RequestInterface;
 
 class GetLegalsListRequest implements RequestInterface
