@@ -20,9 +20,9 @@ class Resource
         $this->httpClient = $httpClient;
     }
 
-    protected function send(RequestInterface $request, bool $asMultipart = false): HttpResponseInterface
+    protected function send(RequestInterface $request, array $options = []): HttpResponseInterface
     {
-        $httpRequest = $this->prepareHttpRequest($request, $asMultipart);
+        $httpRequest = $this->prepareHttpRequest($request, $options);
 
         return $this->httpClient->sendRequest($httpRequest);
     }
@@ -32,9 +32,9 @@ class Resource
         return (array) Utils::jsonDecode((string) $httpResponse->getBody(), true);
     }
 
-    private function prepareHttpRequest(RequestInterface $request, bool $asMultipart): HttpRequestInterface
+    private function prepareHttpRequest(RequestInterface $request, array $options): HttpRequestInterface
     {
-        if ($asMultipart) {
+        if (isset($options['multipart']) && $options['multipart'] === true) {
             $multipart = [];
             foreach ($request->toArray() as $field => $value) {
                 $multipart[] = [

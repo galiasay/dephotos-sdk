@@ -12,7 +12,9 @@ class ToolsResource extends Resource
 {
     public function removeBg(RemoveBgRequest $request): RemoveBgResponse
     {
-        $httpResponse = $this->send($request, $request->getImage() instanceof File);
+        $httpResponse = $this->send($request, [
+            'multipart' => $request->getImage() instanceof File
+        ]);
 
         return new RemoveBgResponse(
             $httpResponse->getBody(),
