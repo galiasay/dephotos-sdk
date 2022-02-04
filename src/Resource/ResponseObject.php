@@ -34,7 +34,7 @@ class ResponseObject
         if (is_array($value) && $class) {
             if ($this->isList($value)) {
                 return array_map(function ($raw) use ($class) {
-                    return (new ResponseObject($raw))->cast($class);
+                    return (new ResponseObject((array) $raw))->cast($class);
                 }, $value);
             }
 
@@ -74,7 +74,7 @@ class ResponseObject
         return null;
     }
 
-    private function isList(array $data): bool
+    protected function isList(array $data): bool
     {
         return $data === [] || (array_keys($data) === range(0, count($data) - 1));
     }
