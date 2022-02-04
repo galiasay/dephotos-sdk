@@ -58,6 +58,15 @@ class SearchRequest implements RequestInterface
     private $video;
 
     /** @var null|bool */
+    private $audio;
+
+    /** @var null|bool */
+    private $music;
+
+    /** @var null|bool */
+    private $soundEffect;
+
+    /** @var null|bool */
     private $editorial;
 
     /** @var null|string */
@@ -274,6 +283,36 @@ class SearchRequest implements RequestInterface
         return $this;
     }
 
+    public function getAudio(): ?bool
+    {
+        return $this->audio;
+    }
+
+    public function setAudio(?bool $audio): void
+    {
+        $this->audio = $audio;
+    }
+
+    public function getMusic(): ?bool
+    {
+        return $this->music;
+    }
+
+    public function setMusic(?bool $music): void
+    {
+        $this->music = $music;
+    }
+
+    public function getSoundEffect(): ?bool
+    {
+        return $this->soundEffect;
+    }
+
+    public function setSoundEffect(?bool $soundEffect): void
+    {
+        $this->soundEffect = $soundEffect;
+    }
+
     public function getEditorial(): ?bool
     {
         return $this->editorial;
@@ -450,6 +489,9 @@ class SearchRequest implements RequestInterface
             'dp_search_photo' => $this->getPhoto(),
             'dp_search_vector' => $this->getVector(),
             'dp_search_video' => $this->getVideo(),
+            'dp_search_audio' => $this->getAudio(),
+            'dp_search_music' => $this->getMusic(),
+            'dp_search_sound_effect' => $this->getSoundEffect(),
             'dp_search_editorial' => $this->getEditorial(),
             'dp_tracking_url' => $this->getTrackingUrl(),
             'dp_country_excluded' => $this->getCountryExcluded(),

@@ -7,6 +7,18 @@ use Depositphotos\SDK\Resource\ResponseObject;
 
 class Item extends ResponseObject
 {
+    public function cast(string $class): ResponseObject
+    {
+        switch ($this->data['type'] ?? null) {
+            case 'video':
+                return new Video($this->data);
+            case 'audio':
+                return new Audio($this->data);
+            default:
+                return parent::cast($class);
+        }
+    }
+
     public function getId(): int
     {
         return (int) $this->getProperty('id');
@@ -196,8 +208,35 @@ class Item extends ResponseObject
         return (array) $this->getProperty('tags');
     }
 
+    /**
+     * @return int[]
+     */
     public function getModelReleases(): array
     {
         return (array) $this->getProperty('model_release_ids');
+    }
+
+    /**
+     * @return int[]
+     */
+    public function getSimilar(): array
+    {
+        return (array) $this->getProperty('similar');
+    }
+
+    /**
+     * @return int[]
+     */
+    public function getSeries(): array
+    {
+        return (array) $this->getProperty('series');
+    }
+
+    /**
+     * @return int[]
+     */
+    public function getSameModel(): array
+    {
+        return (array) $this->getProperty('same_model');
     }
 }

@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Depositphotos\SDK\Resource\Search\Response;
 
-use Depositphotos\SDK\Resource\Search\Response\Search\Item;
+use Depositphotos\SDK\Resource\Search\Response\Common\Item;
 use Depositphotos\SDK\Resource\ResponseObject;
 
 class SearchResponse extends ResponseObject
