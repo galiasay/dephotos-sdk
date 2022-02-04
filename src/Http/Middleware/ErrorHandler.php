@@ -37,8 +37,12 @@ class ErrorHandler implements MiddlewareInterface
 
     private function isSuccess(ResponseInterface $response): bool
     {
-        $responseData = (array) Utils::jsonDecode((string) $response->getBody(), true);
+        if ($response->getHeaderLine('Content-Type') === 'application/json') {
+            $responseData = (array) Utils::jsonDecode((string) $response->getBody(), true);
 
-        return ($responseData['type'] ?? null) === self::TYPE_SUCCESS;
+            return ($responseData['type'] ?? null) === self::TYPE_SUCCESS;
+        }
+
+        return $response->getStatusCode() === 200;
     }
 }
