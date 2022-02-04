@@ -8,6 +8,7 @@ use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestInterface as HttpRequestInterface;
 use Psr\Http\Message\ResponseInterface as HttpResponseInterface;
 use GuzzleHttp\Psr7\Request as HttpRequest;
+use GuzzleHttp\Psr7;
 
 class Resource
 {
@@ -19,9 +20,9 @@ class Resource
         $this->httpClient = $httpClient;
     }
 
-    protected function send(RequestInterface $request): HttpResponseInterface
+    protected function send(RequestInterface $request, array $options = []): HttpResponseInterface
     {
-        $httpRequest = $this->prepareHttpRequest($request);
+        $httpRequest = $this->prepareHttpRequest($request, $options);
 
         return $this->httpClient->sendRequest($httpRequest);
     }
@@ -31,13 +32,26 @@ class Resource
         return (array) Utils::jsonDecode((string) $httpResponse->getBody(), true);
     }
 
-    private function prepareHttpRequest(RequestInterface $request): HttpRequestInterface
+    private function prepareHttpRequest(RequestInterface $request, array $options): HttpRequestInterface
     {
-        $body = http_build_query($request->toArray());
-
-        $headers = [
-            'Content-Type' => 'application/x-www-form-urlencoded',
-        ];
+        if (isset($options['multipart']) && $options['multipart'] === true) {
+            $multipart = [];
+            foreach ($request->toArray() as $field => $value) {
+                $multipart[] = [
+                    'name' => $field,
+                    'contents' => $value,
+                ];
+            }
+            $body = new Psr7\MultipartStream($multipart);
+            $headers = [
+                'Content-Type' => 'multipart/form-data; boundary=' . $body->getBoundary(),
+            ];
+        } else {
+            $body = Psr7\Utils::streamFor(http_build_query($request->toArray()));
+            $headers = [
+                'Content-Type' => 'application/x-www-form-urlencoded',
+            ];
+        }
 
         return new HttpRequest('POST', '', $headers, $body);
     }
