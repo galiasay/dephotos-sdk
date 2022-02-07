@@ -38,6 +38,7 @@ class UserResourceTest extends BaseTestCase
         $responseData = [
             'type' => 'success',
             'sessionid' => 'e9753fbbd7454ea001b7619ce1e20fe5',
+            'userid' => 123,
         ];
 
         $resource = new UserResource($this->createHttpClient($requestData, $responseData));
@@ -47,24 +48,7 @@ class UserResourceTest extends BaseTestCase
         ));
 
         $this->assertEquals($responseData['sessionid'], $result->getSessionId());
-    }
-
-    public function testLoginByToken(): void
-    {
-        $requestData = [
-            'dp_command' => 'loginByToken',
-            'dp_token' => '202cb962ac59075b964b07152d234b70',
-        ];
-
-        $responseData = [
-            'type' => 'success',
-            'sessionid' => 'e9753fbbd7454ea001b7619ce1e20fe5',
-        ];
-
-        $resource = new UserResource($this->createHttpClient($requestData, $responseData));
-        $result = $resource->loginByToken(new LoginByTokenRequest($requestData['dp_token']));
-
-        $this->assertEquals($responseData['sessionid'], $result->getSessionId());
+        $this->assertEquals($responseData['userid'], $result->getUserId());
     }
 
     public function testLoginAsUser(): void
