@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Depositphotos\SDK\Resource\Regular\Purchase\Request;
+namespace Depositphotos\SDK\Resource\Purchase\Request;
 
 use Depositphotos\SDK\Resource\RequestInterface;
 
@@ -23,6 +23,9 @@ class GetPurchasesRequest implements RequestInterface
 
     /** @var null|string */
     private $sortType;
+
+    /** @var null|int */
+    private $subAccountId;
 
     /** @var null|int */
     private $itemId;
@@ -79,6 +82,18 @@ class GetPurchasesRequest implements RequestInterface
         return $this;
     }
 
+    public function getSubAccountId(): ?int
+    {
+        return $this->subAccountId;
+    }
+
+    public function setSubAccountId(?int $subAccountId): self
+    {
+        $this->subAccountId = $subAccountId;
+
+        return $this;
+    }
+
     public function getItemId(): ?int
     {
         return $this->itemId;
@@ -124,6 +139,7 @@ class GetPurchasesRequest implements RequestInterface
             'dp_offset' => $this->getOffset(),
             'dp_sort_field' => $this->getSortField(),
             'dp_sort_type' => $this->getSortType(),
+            'dp_subaccount_id' => $this->getSubAccountId(),
             'dp_item_id' => $this->getItemId(),
             'dp_size' => $this->getSize(),
             'dp_datetime_format' => $this->getDatetimeFormat(),

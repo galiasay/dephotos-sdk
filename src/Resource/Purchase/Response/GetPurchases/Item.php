@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Depositphotos\SDK\Resource\Regular\Purchase\Response\GetPurchases;
+namespace Depositphotos\SDK\Resource\Purchase\Response\GetPurchases;
 
 use Depositphotos\SDK\Resource\ResponseObject;
 
@@ -12,46 +12,6 @@ class Item extends ResponseObject
         return (int) $this->getProperty('mediaId');
     }
 
-    public function getLicense(): string
-    {
-        return (string) $this->getProperty('license');
-    }
-
-    public function getSize(): string
-    {
-        return (string) $this->getProperty('size');
-    }
-
-    public function getPrice(): float
-    {
-        return (float) $this->getProperty('price');
-    }
-
-    public function getMethod(): string
-    {
-        return (string) $this->getProperty('method');
-    }
-
-    public function getPurchaseDate(): \DateTimeInterface
-    {
-        return $this->getDateTime('purchaseDate');
-    }
-
-    public function getLicenseId(): int
-    {
-        return (int) $this->getProperty('licenseId');
-    }
-
-    public function getPurchasedWidth(): int
-    {
-        return (int) $this->getProperty('purchasedWidth');
-    }
-
-    public function getPurchasedHeight(): int
-    {
-        return (int) $this->getProperty('purchasedHeight');
-    }
-
     public function getTitle(): string
     {
         return (string) $this->getProperty('title');
@@ -60,26 +20,6 @@ class Item extends ResponseObject
     public function getDescription(): string
     {
         return (string) $this->getProperty('description');
-    }
-
-    public function getStatus(): string
-    {
-        return (string) $this->getProperty('status');
-    }
-
-    public function getWidth(): int
-    {
-        return (int) $this->getProperty('width');
-    }
-
-    public function getHeight(): int
-    {
-        return (int) $this->getProperty('height');
-    }
-
-    public function getMp(): float
-    {
-        return (float) $this->getProperty('mp');
     }
 
     public function getViews(): int
@@ -115,6 +55,21 @@ class Item extends ResponseObject
     public function getUpdated(): \DateTimeInterface
     {
         return $this->getDateTime('updated');
+    }
+
+    public function getMp(): float
+    {
+        return (float) $this->getProperty('mp');
+    }
+
+    public function getHeight(): int
+    {
+        return (int) $this->getProperty('height');
+    }
+
+    public function getWidth(): int
+    {
+        return (int) $this->getProperty('width');
     }
 
     public function isEditorial(): bool
@@ -175,5 +130,29 @@ class Item extends ResponseObject
     public function isFreeItem(): bool
     {
         return (bool) $this->getProperty('isFreeItem');
+    }
+
+    /**
+     * @return Similar[]
+     */
+    public function getSimilar(): array
+    {
+        return (array) $this->getProperty('similar', Similar::class);
+    }
+
+    /**
+     * @return Similar[]
+     */
+    public function getSeries(): array
+    {
+        return (array) $this->getProperty('series', Similar::class);
+    }
+
+    /**
+     * @return Similar[]
+     */
+    public function getSameModel(): array
+    {
+        return (array) $this->getProperty('same_model', Similar::class);
     }
 }
