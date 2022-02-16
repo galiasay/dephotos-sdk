@@ -40,7 +40,10 @@ class Download extends ResponseObject
 
     public function getItem(): Item
     {
-        return new Item($this->data);
+        /** @var Item $item */
+        $item = $this->cast(Item::class);
+
+        return $item;
     }
 
     public function getActor(): User
