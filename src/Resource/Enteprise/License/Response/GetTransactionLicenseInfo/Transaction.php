@@ -32,4 +32,12 @@ class Transaction extends ResponseObject
     {
         return (int) $this->getProperty('currencyId');
     }
+
+    /**
+     * @return ExtOption[]
+     */
+    public function getExtOptions(): array
+    {
+        return (array) $this->getProperty('extOptions', ExtOption::class);
+    }
 }
