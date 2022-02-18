@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Depositphotos\SDK;
 
-use Depositphotos\SDK\Resource\Enteprise\Item\ItemResource;
+use Depositphotos\SDK\Resource\Enterprise\Item\ItemResource;
 
 class EnterpriseClient extends Client
 {
