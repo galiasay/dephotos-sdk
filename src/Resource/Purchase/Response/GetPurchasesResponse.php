@@ -1,19 +1,19 @@
 <?php
 declare(strict_types=1);
 
-namespace Depositphotos\SDK\Resource\Regular\Purchase\Response;
+namespace Depositphotos\SDK\Resource\Purchase\Response;
 
-use Depositphotos\SDK\Resource\Regular\Purchase\Response\GetPurchases\Item;
+use Depositphotos\SDK\Resource\Purchase\Response\GetPurchases\Purchase;
 use Depositphotos\SDK\Resource\ResponseObject;
 
 class GetPurchasesResponse extends ResponseObject
 {
     /**
-     * @return Item[]
+     * @return Purchase[]
      */
     public function getPurchases(): array
     {
-        return (array) $this->getProperty('purchases', Item::class);
+        return (array) $this->getProperty('purchases', Purchase::class);
     }
 
     public function getCount(): int

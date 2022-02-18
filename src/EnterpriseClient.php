@@ -7,6 +7,7 @@ use Depositphotos\SDK\Resource\Enterprise\Item\ItemResource;
 use Depositphotos\SDK\Resource\Enterprise\License\LicenseResource;
 use Depositphotos\SDK\Resource\Enterprise\User\UserResource;
 use Depositphotos\SDK\Resource\Enterprise\Invoice\InvoiceResource;
+use Depositphotos\SDK\Resource\Enterprise\Purchase\PurchaseResource;
 
 class EnterpriseClient extends Client
 {
@@ -28,5 +29,10 @@ class EnterpriseClient extends Client
     public function invoice(): InvoiceResource
     {
         return new InvoiceResource($this->httpClient);
+    }
+
+    public function purchase(): PurchaseResource
+    {
+        return new PurchaseResource($this->httpClient);
     }
 }
