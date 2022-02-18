@@ -7,11 +7,13 @@ use Depositphotos\SDK\Resource\Enterprise\Purchase\Request\ComplimentaryDownload
 use Depositphotos\SDK\Resource\Enterprise\Purchase\Request\GetChangedItemTransactionsRequest;
 use Depositphotos\SDK\Resource\Enterprise\Purchase\Request\GetDownloadUrlRequest;
 use Depositphotos\SDK\Resource\Enterprise\Purchase\Request\GetGroupCompDownloadsRequest;
+use Depositphotos\SDK\Resource\Enterprise\Purchase\Request\GetLicensedItemsRequest;
 use Depositphotos\SDK\Resource\Enterprise\Purchase\Request\LicenseItemRequest;
 use Depositphotos\SDK\Resource\Enterprise\Purchase\Response\ComplimentaryDownloadResponse;
 use Depositphotos\SDK\Resource\Enterprise\Purchase\Response\GetChangedItemTransactionsResponse;
 use Depositphotos\SDK\Resource\Enterprise\Purchase\Response\GetDownloadUrlResponse;
 use Depositphotos\SDK\Resource\Enterprise\Purchase\Response\GetGroupCompDownloadsResponse;
+use Depositphotos\SDK\Resource\Enterprise\Purchase\Response\GetLicensedItemsResponse;
 use Depositphotos\SDK\Resource\Enterprise\Purchase\Response\LicenseItemResponse;
 use Depositphotos\SDK\Resource\Purchase\PurchaseResource as BasePurchaseResource;
 
@@ -50,5 +52,12 @@ class PurchaseResource extends BasePurchaseResource
         $httpResponse = $this->send($request);
 
         return new LicenseItemResponse($this->convertHttpResponseToArray($httpResponse)['result'] ?? []);
+    }
+
+    public function getLicensedItems(GetLicensedItemsRequest $request): GetLicensedItemsResponse
+    {
+        $httpResponse = $this->send($request);
+
+        return new GetLicensedItemsResponse($this->convertHttpResponseToArray($httpResponse));
     }
 }

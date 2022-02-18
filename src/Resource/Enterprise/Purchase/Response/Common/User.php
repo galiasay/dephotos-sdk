@@ -1,6 +1,6 @@
 <?php
 
-namespace Depositphotos\SDK\Resource\Enterprise\Purchase\Response\GetGroupCompDownloads;
+namespace Depositphotos\SDK\Resource\Enterprise\Purchase\Response\Common;
 
 use Depositphotos\SDK\Resource\ResponseObject;
 
