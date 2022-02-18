@@ -5,6 +5,7 @@ namespace Depositphotos\SDK;
 
 use Depositphotos\SDK\Resource\Enterprise\Item\ItemResource;
 use Depositphotos\SDK\Resource\Enteprise\License\LicenseResource;
+use Depositphotos\SDK\Resource\Enterprise\User\UserResource;
 
 class EnterpriseClient extends Client
 {
@@ -16,5 +17,10 @@ class EnterpriseClient extends Client
     public function license(): LicenseResource
     {
         return new LicenseResource($this->httpClient);
+    }
+
+    public function user(): UserResource
+    {
+        return new UserResource($this->httpClient);
     }
 }

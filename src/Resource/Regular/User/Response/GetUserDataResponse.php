@@ -28,9 +28,9 @@ class GetUserDataResponse extends ResponseObject
         return (string) $this->getProperty('timezone');
     }
 
-    public function getCreatedAt(): string
+    public function getCreatedAt(): \DateTimeInterface
     {
-        return (string) $this->getProperty('createdAt');
+        return $this->getDateTime('createdAt');
     }
 
     public function getCountry(): string

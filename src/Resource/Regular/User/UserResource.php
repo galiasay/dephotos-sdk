@@ -36,13 +36,6 @@ class UserResource extends Resource
         return new LoginResponse($this->convertHttpResponseToArray($httpResponse));
     }
 
-    public function loginByToken(LoginByTokenRequest $request): LoginByTokenResponse
-    {
-        $httpResponse = $this->send($request);
-
-        return new LoginByTokenResponse($this->convertHttpResponseToArray($httpResponse));
-    }
-
     public function loginAsUser(LoginAsUserRequest $request): LoginAsUserResponse
     {
         $httpResponse = $this->send($request);
