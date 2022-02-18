@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Depositphotos\SDK\Resource\Enterprise\Purchase\Response;
+namespace Depositphotos\SDK\Resource\Enterprise\Item\Response;
 
-use Depositphotos\SDK\Resource\Enterprise\Purchase\Response\GetGroupCompDownloads\Download;
+use Depositphotos\SDK\Resource\Enterprise\Item\Response\GetGroupCompDownloads\Download;
 use Depositphotos\SDK\Resource\ResponseObject;
 
 class GetGroupCompDownloadsResponse extends ResponseObject

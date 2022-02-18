@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace Depositphotos\SDK\Resource\Enterprise\Purchase\Response\GetLicensedItems;
 
-use Depositphotos\SDK\Resource\Enterprise\Purchase\Response\Common\User;
 use Depositphotos\SDK\Resource\ResponseObject;
 use DateTimeInterface;
 

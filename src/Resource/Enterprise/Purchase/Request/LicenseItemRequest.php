@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Depositphotos\SDK\Resource\Enterprise\Purchase\Request;
 
+use Depositphotos\SDK\Exception\Exception;
 use Depositphotos\SDK\Resource\RequestInterface;
 use Depositphotos\SDK\Resource\Enterprise\Purchase\Request\LicenseItem\LicensingInfo;
 
@@ -33,6 +34,12 @@ class LicenseItemRequest implements RequestInterface
 
     public function __construct(string $sessionId, array $licensing)
     {
+        foreach ($licensing as $licensingInfo) {
+            if (!$licensingInfo instanceof LicensingInfo) {
+                throw new Exception(sprintf('Licensing info must be an instance of %s', LicensingInfo::class));
+            }
+        }
+
         $this->sessionId = $sessionId;
         $this->licensing = $licensing;
     }
@@ -117,6 +124,7 @@ class LicenseItemRequest implements RequestInterface
                     'dp_item_id' => $licensing->getItemIds(),
                     'dp_option' => $licensing->getSize(),
                     'dp_license_id' => $licensing->getLicenseId(),
+                    'dp_ext_options' => $licensing->getExtOption(),
                 ];
             }, $this->getLicensing()),
             'dp_project' => $this->getProject(),

@@ -1,6 +1,6 @@
 <?php
 
-namespace Depositphotos\SDK\Resource\Enterprise\Purchase\Response\Common;
+namespace Depositphotos\SDK\Resource\Enterprise\Purchase\Response\GetLicensedItems;
 
 use Depositphotos\SDK\Resource\ResponseObject;
 

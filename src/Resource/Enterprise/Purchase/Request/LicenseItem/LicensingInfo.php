@@ -14,11 +14,15 @@ class LicensingInfo
     /** @var int */
     private $licenseId;
 
-    public function __construct(array $itemIds, string $size, int $licenseId)
+    /** @var null|int */
+    private $extOption;
+
+    public function __construct(array $itemIds, string $size, int $licenseId, int $extOption = null)
     {
         $this->itemIds = $itemIds;
         $this->size = $size;
         $this->licenseId = $licenseId;
+        $this->extOption = $extOption;
     }
 
     public function getItemIds(): array
@@ -34,5 +38,10 @@ class LicensingInfo
     public function getLicenseId(): int
     {
         return $this->licenseId;
+    }
+
+    public function getExtOption(): ?int
+    {
+        return $this->extOption;
     }
 }

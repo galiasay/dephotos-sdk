@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Depositphotos\SDK\Resource\Enterprise\Purchase\Request;
+namespace Depositphotos\SDK\Resource\Enterprise\Item\Request;
 
 use Depositphotos\SDK\Resource\RequestInterface;
 

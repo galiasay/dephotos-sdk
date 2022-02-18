@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Depositphotos\SDK\Resource\Enterprise\Purchase\Response\GetGroupCompDownloads;
+namespace Depositphotos\SDK\Resource\Enterprise\Item\Response\GetGroupCompDownloads;
 
 class Audio extends Item
 {
