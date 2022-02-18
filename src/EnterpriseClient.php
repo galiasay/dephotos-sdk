@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace Depositphotos\SDK;
 
 use Depositphotos\SDK\Resource\Enterprise\Item\ItemResource;
-use Depositphotos\SDK\Resource\Enteprise\License\LicenseResource;
+use Depositphotos\SDK\Resource\Enterprise\License\LicenseResource;
 use Depositphotos\SDK\Resource\Enterprise\User\UserResource;
 use Depositphotos\SDK\Resource\Enterprise\Invoice\InvoiceResource;
 

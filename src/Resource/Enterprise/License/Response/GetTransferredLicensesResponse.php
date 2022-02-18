@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Depositphotos\SDK\Resource\Enteprise\License\Response;
+namespace Depositphotos\SDK\Resource\Enterprise\License\Response;
 
-use Depositphotos\SDK\Resource\Enteprise\License\Response\GetTransferredLicenses\Transaction;
+use Depositphotos\SDK\Resource\Enterprise\License\Response\GetTransferredLicenses\Transaction;
 use Depositphotos\SDK\Resource\ResponseObject;
 
 class GetTransferredLicensesResponse extends ResponseObject

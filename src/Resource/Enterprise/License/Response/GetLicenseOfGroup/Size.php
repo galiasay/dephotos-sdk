@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Depositphotos\SDK\Resource\Enteprise\License\Response\GetLicenseOfGroup;
+namespace Depositphotos\SDK\Resource\Enterprise\License\Response\GetLicenseOfGroup;
 
 use Depositphotos\SDK\Resource\ResponseObject;
 

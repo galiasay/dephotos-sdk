@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Depositphotos\SDK\Resource\Enteprise\License\Request;
+namespace Depositphotos\SDK\Resource\Enterprise\License\Request;
 
 use Depositphotos\SDK\Resource\RequestInterface;
-use Depositphotos\SDK\Resource\Enteprise\License\Request\TransferEnterpriseLicense\LegalInfo;
+use Depositphotos\SDK\Resource\Enterprise\License\Request\TransferEnterpriseLicense\LegalInfo;
 
 class TransferLicenseRequest implements RequestInterface
 {

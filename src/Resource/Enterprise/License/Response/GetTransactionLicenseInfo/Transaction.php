@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Depositphotos\SDK\Resource\Enteprise\License\Response\GetTransactionLicenseInfo;
+namespace Depositphotos\SDK\Resource\Enterprise\License\Response\GetTransactionLicenseInfo;
 
 use Depositphotos\SDK\Resource\ResponseObject;
 use DateTimeInterface;

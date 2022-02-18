@@ -1,15 +1,15 @@
 <?php
 declare(strict_types=1);
 
-namespace Depositphotos\SDK\Resource\Enteprise\License;
+namespace Depositphotos\SDK\Resource\Enterprise\License;
 
-use Depositphotos\SDK\Resource\Enteprise\License\Request\GetLicenseOfGroupRequest;
-use Depositphotos\SDK\Resource\Enteprise\License\Request\GetTransactionLicenseInfoRequest;
-use Depositphotos\SDK\Resource\Enteprise\License\Request\GetTransferredLicensesRequest;
-use Depositphotos\SDK\Resource\Enteprise\License\Request\TransferLicenseRequest;
-use Depositphotos\SDK\Resource\Enteprise\License\Response\GetLicenseOfGroupResponse;
-use Depositphotos\SDK\Resource\Enteprise\License\Response\GetTransactionLicenseInfoResponse;
-use Depositphotos\SDK\Resource\Enteprise\License\Response\GetTransferredLicensesResponse;
+use Depositphotos\SDK\Resource\Enterprise\License\Request\GetLicenseOfGroupRequest;
+use Depositphotos\SDK\Resource\Enterprise\License\Request\GetTransactionLicenseInfoRequest;
+use Depositphotos\SDK\Resource\Enterprise\License\Request\GetTransferredLicensesRequest;
+use Depositphotos\SDK\Resource\Enterprise\License\Request\TransferLicenseRequest;
+use Depositphotos\SDK\Resource\Enterprise\License\Response\GetLicenseOfGroupResponse;
+use Depositphotos\SDK\Resource\Enterprise\License\Response\GetTransactionLicenseInfoResponse;
+use Depositphotos\SDK\Resource\Enterprise\License\Response\GetTransferredLicensesResponse;
 use Depositphotos\SDK\Resource\Resource;
 
 class LicenseResource extends Resource

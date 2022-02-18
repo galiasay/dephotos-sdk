@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Depositphotos\SDK\Resource\Enteprise\License\Response\GetTransferredLicenses;
+namespace Depositphotos\SDK\Resource\Enterprise\License\Response\GetTransferredLicenses;
 
 class Audio extends Item
 {

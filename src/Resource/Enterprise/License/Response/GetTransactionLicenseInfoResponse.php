@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace Depositphotos\SDK\Resource\Enteprise\License\Response;
+namespace Depositphotos\SDK\Resource\Enterprise\License\Response;
 
-use Depositphotos\SDK\Resource\Enteprise\License\Response\GetTransactionLicenseInfo\Item;
-use Depositphotos\SDK\Resource\Enteprise\License\Response\GetTransactionLicenseInfo\LegalInfo;
-use Depositphotos\SDK\Resource\Enteprise\License\Response\GetTransactionLicenseInfo\License;
-use Depositphotos\SDK\Resource\Enteprise\License\Response\GetTransactionLicenseInfo\Transaction;
+use Depositphotos\SDK\Resource\Enterprise\License\Response\GetTransactionLicenseInfo\Item;
+use Depositphotos\SDK\Resource\Enterprise\License\Response\GetTransactionLicenseInfo\LegalInfo;
+use Depositphotos\SDK\Resource\Enterprise\License\Response\GetTransactionLicenseInfo\License;
+use Depositphotos\SDK\Resource\Enterprise\License\Response\GetTransactionLicenseInfo\Transaction;
 use Depositphotos\SDK\Resource\ResponseObject;
 
 class GetTransactionLicenseInfoResponse extends ResponseObject

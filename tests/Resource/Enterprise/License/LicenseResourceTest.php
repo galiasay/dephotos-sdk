@@ -3,14 +3,14 @@ declare(strict_types=1);
 
 namespace Depositphotos\SDK\Tests\Resource\Enterprise\License;
 
-use Depositphotos\SDK\Resource\Enteprise\License\LicenseResource;
-use Depositphotos\SDK\Resource\Enteprise\License\Request\GetLicenseOfGroupRequest;
-use Depositphotos\SDK\Resource\Enteprise\License\Request\GetTransactionLicenseInfoRequest;
-use Depositphotos\SDK\Resource\Enteprise\License\Request\GetTransferredLicensesRequest;
-use Depositphotos\SDK\Resource\Enteprise\License\Request\TransferLicenseRequest;
-use Depositphotos\SDK\Resource\Enteprise\License\Response\GetTransactionLicenseInfo\LegalInfo;
-use Depositphotos\SDK\Resource\Enteprise\License\Request\TransferEnterpriseLicense\LegalInfo as LegalInfoRequest;
-use Depositphotos\SDK\Resource\Enteprise\License\Response\GetTransferredLicenses\User;
+use Depositphotos\SDK\Resource\Enterprise\License\LicenseResource;
+use Depositphotos\SDK\Resource\Enterprise\License\Request\GetLicenseOfGroupRequest;
+use Depositphotos\SDK\Resource\Enterprise\License\Request\GetTransactionLicenseInfoRequest;
+use Depositphotos\SDK\Resource\Enterprise\License\Request\GetTransferredLicensesRequest;
+use Depositphotos\SDK\Resource\Enterprise\License\Request\TransferLicenseRequest;
+use Depositphotos\SDK\Resource\Enterprise\License\Response\GetTransactionLicenseInfo\LegalInfo;
+use Depositphotos\SDK\Resource\Enterprise\License\Request\TransferEnterpriseLicense\LegalInfo as LegalInfoRequest;
+use Depositphotos\SDK\Resource\Enterprise\License\Response\GetTransferredLicenses\User;
 use Depositphotos\SDK\Tests\BaseTestCase;
 use Depositphotos\SDK\Tests\Resource\ResourceTrait;
 

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Depositphotos\SDK\Resource\Enteprise\License\Request\TransferEnterpriseLicense;
+namespace Depositphotos\SDK\Resource\Enterprise\License\Request\TransferEnterpriseLicense;
 
 class LegalInfo
 {
