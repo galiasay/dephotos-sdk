@@ -89,6 +89,7 @@ class UserResourceTest extends BaseTestCase
         $requestData = [
             'dp_command' => 'changePasswordEnterpriseUserByAdmin',
             'dp_session_id' => 'e9753fbbd7454ea001b7619ce1e20fe5',
+            'dp_user_id' => 123,
             'dp_new_password' => 'new_password'
         ];
 
@@ -99,6 +100,7 @@ class UserResourceTest extends BaseTestCase
         $resource = new UserResource($this->createHttpClient($requestData, $responseData));
         $resource->changePassword(new ChangePasswordRequest(
             $requestData['dp_session_id'],
+            $requestData['dp_user_id'],
             $requestData['dp_new_password']
         ));
     }

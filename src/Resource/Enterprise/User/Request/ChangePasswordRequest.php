@@ -12,18 +12,27 @@ class ChangePasswordRequest implements RequestInterface
     /** @var string */
     private $sessionId;
 
+    /** @var int */
+    private $userId;
+
     /** @var string */
     private $newPassword;
 
-    public function __construct(string $sessionId, string $newPassword)
+    public function __construct(string $sessionId, int $userId, string $newPassword)
     {
         $this->sessionId = $sessionId;
+        $this->userId = $userId;
         $this->newPassword = $newPassword;
     }
 
     public function getSessionId(): string
     {
         return $this->sessionId;
+    }
+
+    public function getUserId(): int
+    {
+        return $this->userId;
     }
 
     public function getNewPassword(): string
@@ -36,6 +45,7 @@ class ChangePasswordRequest implements RequestInterface
         return [
             'dp_command' => self::COMMAND_NAME,
             'dp_session_id' => $this->getSessionId(),
+            'dp_user_id' => $this->getUserId(),
             'dp_new_password' => $this->getNewPassword(),
         ];
     }
