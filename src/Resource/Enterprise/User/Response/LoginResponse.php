@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Depositphotos\SDK\Resource\Regular\User\Response;
+namespace Depositphotos\SDK\Resource\Enterprise\User\Response;
 
 use Depositphotos\SDK\Resource\ResponseObject;
 
