@@ -3,23 +3,14 @@ declare(strict_types=1);
 
 namespace Depositphotos\SDK\Resource\Regular\Item;
 
-use Depositphotos\SDK\Resource\Regular\Item\Request\CheckItemsStatusRequest;
 use Depositphotos\SDK\Resource\Regular\Item\Request\GetFilesCountRequest;
 use Depositphotos\SDK\Resource\Regular\Item\Request\GetFreeFilesRequest;
-use Depositphotos\SDK\Resource\Regular\Item\Response\CheckItemsStatusResponse;
 use Depositphotos\SDK\Resource\Regular\Item\Response\GetFilesCountResponse;
 use Depositphotos\SDK\Resource\Regular\Item\Response\GetFreeFilesResponse;
-use Depositphotos\SDK\Resource\Resource;
+use Depositphotos\SDK\Resource\Item\ItemResource as BaseItemResource;
 
-class ItemResource extends Resource
+class ItemResource extends BaseItemResource
 {
-    public function checkItemsStatus(CheckItemsStatusRequest $request): CheckItemsStatusResponse
-    {
-        $httpResponse = $this->send($request);
-
-        return new CheckItemsStatusResponse($this->convertHttpResponseToArray($httpResponse));
-    }
-
     public function getFilesCount(GetFilesCountRequest $request): GetFilesCountResponse
     {
         $httpResponse = $this->send($request);
