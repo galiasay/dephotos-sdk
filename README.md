@@ -24,9 +24,11 @@ use Depositphotos\SDK\Client;
 use Depositphotos\SDK\Resource\Regular\User\Request\LoginRequest;
 
 $client = Client::createRegularClient('apiKey');
-$request = new LoginRequest('username', 'password');
 
-echo $client->user()->login($request)->getSessionId();
+$request = new LoginRequest('username', 'password');
+$response = $client->user()->login($request);
+
+echo $response->getSessionId();
 ```
 
 ## Documentation
