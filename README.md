@@ -1,1 +1,37 @@
-# dephotos-sdk
+#PHP Depositphotos SDK
+
+## Requirements
+
+* PHP 7.1 or greater
+* `ext-curl`
+* `ext-json`
+
+## Installation
+The Depositphotos PHP SDK can be installed through Composer.
+
+```bash
+composer require depositphotos/sdk
+```
+
+## Usage
+
+```php
+require 'vendor/autoload.php';
+```
+
+```php
+use Depositphotos\SDK\Client;
+use Depositphotos\SDK\Resource\Regular\User\Request\LoginRequest;
+
+$client = Client::createRegularClient('apiKey');
+$request = new LoginRequest('username', 'password');
+
+echo $client->user()->login($request)->getSessionId();
+```
+
+## Documentation
+[**PHP SDK Docs**](https://github.com/galiasay/dephotos-sdk/wiki)
+
+[**Regular API Docs**](https://api.depositphotos.com/doc2)
+
+[**Enterprise API Docs**](https://api.depositphotos.com/doc)
