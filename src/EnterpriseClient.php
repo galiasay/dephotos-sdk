@@ -5,6 +5,7 @@ namespace Depositphotos\SDK;
 
 use Depositphotos\SDK\Resource\Enterprise\Item\ItemResource;
 use Depositphotos\SDK\Resource\Enterprise\License\LicenseResource;
+use Depositphotos\SDK\Resource\Enterprise\Statistics\StatisticsResource;
 use Depositphotos\SDK\Resource\Enterprise\User\UserResource;
 use Depositphotos\SDK\Resource\Enterprise\Invoice\InvoiceResource;
 use Depositphotos\SDK\Resource\Enterprise\Purchase\PurchaseResource;
@@ -34,5 +35,10 @@ class EnterpriseClient extends Client
     public function purchase(): PurchaseResource
     {
         return new PurchaseResource($this->httpClient);
+    }
+
+    public function statistics(): StatisticsResource
+    {
+        return new StatisticsResource($this->httpClient);
     }
 }
