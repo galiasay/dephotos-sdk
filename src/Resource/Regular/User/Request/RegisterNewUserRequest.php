@@ -19,10 +19,10 @@ class RegisterNewUserRequest implements RequestInterface
     /** @var string */
     private $email;
 
-    /** @var UserInfoDTO */
+    /** @var null|UserInfoDTO */
     private $userInfo;
 
-    public function __construct(string $username, string $password, string $email, UserInfoDTO $userInfo)
+    public function __construct(string $username, string $password, string $email, UserInfoDTO $userInfo = null)
     {
         if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
             throw new \InvalidArgumentException(sprintf('Email address "%s" is invalid', $email));
@@ -49,7 +49,7 @@ class RegisterNewUserRequest implements RequestInterface
         return $this->email;
     }
 
-    public function getUserInfo(): UserInfoDTO
+    public function getUserInfo(): ?UserInfoDTO
     {
         return $this->userInfo;
     }
@@ -61,7 +61,7 @@ class RegisterNewUserRequest implements RequestInterface
             'dp_regist_user' => $this->getUsername(),
             'dp_regist_email' => $this->getEmail(),
             'dp_regist_password' => $this->getPassword(),
-            'dp_user_info' => $this->getUserInfo()->toArray(),
+            'dp_user_info' => $this->getUserInfo() ? $this->getUserInfo()->toArray() : [],
         ];
     }
 }

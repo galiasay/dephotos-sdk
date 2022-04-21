@@ -13,28 +13,28 @@ class GetMediaRequest implements RequestInterface
     private $sessionId;
 
     /** @var int */
-    private $mediaId;
+    private $itemId;
 
     /** @var string */
-    private $mediaOption;
+    private $size;
 
     /** @var string */
-    private $mediaLicense;
+    private $license;
 
     /** @var null|int */
     private $subscriptionId;
 
     public function __construct(
         string $sessionId,
-        int $mediaId,
-        string $mediaOption,
-        string $mediaLicense,
+        int $itemId,
+        string $size,
+        string $license,
         ?int $subscriptionId = null
     ) {
         $this->sessionId = $sessionId;
-        $this->mediaId = $mediaId;
-        $this->mediaOption = $mediaOption;
-        $this->mediaLicense = $mediaLicense;
+        $this->itemId = $itemId;
+        $this->size = $size;
+        $this->license = $license;
         $this->subscriptionId = $subscriptionId;
     }
 
@@ -43,19 +43,19 @@ class GetMediaRequest implements RequestInterface
         return $this->sessionId;
     }
 
-    public function getMediaId(): int
+    public function getItemId(): int
     {
-        return $this->mediaId;
+        return $this->itemId;
     }
 
-    public function getMediaOption(): string
+    public function getSize(): string
     {
-        return $this->mediaOption;
+        return $this->size;
     }
 
-    public function getMediaLicense(): string
+    public function getLicense(): string
     {
-        return $this->mediaLicense;
+        return $this->license;
     }
 
     public function getSubscriptionId(): ?int
@@ -68,9 +68,9 @@ class GetMediaRequest implements RequestInterface
         return [
             'dp_command' => self::COMMAND_NAME,
             'dp_session_id' => $this->getSessionId(),
-            'dp_media_id' => $this->getMediaId(),
-            'dp_media_option' => $this->getMediaOption(),
-            'dp_media_license' => $this->getMediaLicense(),
+            'dp_media_id' => $this->getItemId(),
+            'dp_media_option' => $this->getSize(),
+            'dp_media_license' => $this->getLicense(),
             'dp_subscription_id' => $this->getSubscriptionId(),
         ];
     }

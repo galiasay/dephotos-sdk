@@ -7,7 +7,7 @@ use Depositphotos\SDK\Resource\Enterprise\Item\Request\ComplimentaryDownloadRequ
 use Depositphotos\SDK\Resource\Enterprise\Item\Request\GetGroupCompDownloadsRequest;
 use Depositphotos\SDK\Resource\Enterprise\Item\Response\ComplimentaryDownloadResponse;
 use Depositphotos\SDK\Resource\Enterprise\Item\Response\GetGroupCompDownloadsResponse;
-use Depositphotos\SDK\Resource\Item\ItemResource as BaseItemResource;
+use Depositphotos\SDK\Resource\Common\Item\ItemResource as BaseItemResource;
 
 class ItemResource extends BaseItemResource
 {

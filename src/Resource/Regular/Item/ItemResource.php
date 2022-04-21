@@ -7,7 +7,7 @@ use Depositphotos\SDK\Resource\Regular\Item\Request\GetFilesCountRequest;
 use Depositphotos\SDK\Resource\Regular\Item\Request\GetFreeFilesRequest;
 use Depositphotos\SDK\Resource\Regular\Item\Response\GetFilesCountResponse;
 use Depositphotos\SDK\Resource\Regular\Item\Response\GetFreeFilesResponse;
-use Depositphotos\SDK\Resource\Item\ItemResource as BaseItemResource;
+use Depositphotos\SDK\Resource\Common\Item\ItemResource as BaseItemResource;
 
 class ItemResource extends BaseItemResource
 {

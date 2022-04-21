@@ -27,7 +27,7 @@ class ReDownloadResponse extends ResponseObject
         return (int) $this->getProperty('itemId');
     }
 
-    public function getOption(): string
+    public function getSize(): string
     {
         return (string) $this->getProperty('option');
     }

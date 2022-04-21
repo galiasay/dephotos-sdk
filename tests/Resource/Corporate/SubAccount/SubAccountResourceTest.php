@@ -156,7 +156,7 @@ class SubAccountResourceTest extends BaseTestCase
 
         $this->assertEquals($responseData['creditsAmount'], $result->getCreditsAmount());
         $this->assertEquals($responseData['subscriptionAmount'], $result->getSubscriptionAmount());
-        $this->assertEquals($responseData['invoiceAmount'], $result->getInvoiceAmountO());
+        $this->assertEquals($responseData['invoiceAmount'], $result->getInvoiceAmount());
         $this->assertEquals($responseData['filesAmount'], $result->getFilesAmount());
     }
 
@@ -250,7 +250,7 @@ class SubAccountResourceTest extends BaseTestCase
         ));
 
         foreach ($result->getPurchases() as $key => $purchase) {
-            $this->assertEquals($responseData['purchases'][$key]['mediaId'], $purchase->getMediaId());
+            $this->assertEquals($responseData['purchases'][$key]['mediaId'], $purchase->getItemId());
             $this->assertEquals($responseData['purchases'][$key]['license'], $purchase->getLicense());
             $this->assertEquals($responseData['purchases'][$key]['size'], $purchase->getSize());
             $this->assertEquals($responseData['purchases'][$key]['price'], $purchase->getPrice());

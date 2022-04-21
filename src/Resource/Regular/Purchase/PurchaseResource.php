@@ -7,7 +7,7 @@ use Depositphotos\SDK\Resource\Regular\Purchase\Request\GetMediaRequest;
 use Depositphotos\SDK\Resource\Regular\Purchase\Request\ReDownloadRequest;
 use Depositphotos\SDK\Resource\Regular\Purchase\Response\GetMediaResponse;
 use Depositphotos\SDK\Resource\Regular\Purchase\Response\ReDownloadResponse;
-use Depositphotos\SDK\Resource\Purchase\PurchaseResource as BasePurchaseResource;
+use Depositphotos\SDK\Resource\Common\Purchase\PurchaseResource as BasePurchaseResource;
 
 class PurchaseResource extends BasePurchaseResource
 {

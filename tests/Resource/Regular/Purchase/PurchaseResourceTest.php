@@ -45,7 +45,7 @@ class PurchaseResourceTest extends BaseTestCase
         $this->assertEquals($responseData['downloadLink'], $result->getDownloadLink());
         $this->assertEquals($responseData['licenseId'], $result->getLicenseId());
         $this->assertEquals($responseData['method'], $result->getMethod());
-        $this->assertEquals($responseData['option'], $result->getOption());
+        $this->assertEquals($responseData['option'], $result->getSize());
         $this->assertEquals($responseData['itemId'], $result->getItemId());
     }
 
@@ -79,7 +79,7 @@ class PurchaseResourceTest extends BaseTestCase
         $this->assertEquals($responseData['downloadLink'], $result->getDownloadLink());
         $this->assertEquals($responseData['licenseId'], $result->getLicenseId());
         $this->assertEquals($responseData['method'], $result->getMethod());
-        $this->assertEquals($responseData['option'], $result->getOption());
+        $this->assertEquals($responseData['option'], $result->getSize());
         $this->assertEquals($responseData['itemId'], $result->getItemId());
     }
 }
