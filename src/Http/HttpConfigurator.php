@@ -21,7 +21,7 @@ class HttpConfigurator
     /** @var null|ClientInterface */
     private $httpClient;
 
-    public function __construct(string $apiKey, ?string $endpoint = null, ?ClientInterface $httpClient = null)
+    public function __construct(string $apiKey, ?ClientInterface $httpClient = null, ?string $endpoint = null)
     {
         $this->apiKey = $apiKey;
         $this->endpoint = $endpoint ?? self::API_ENDPOINT;
