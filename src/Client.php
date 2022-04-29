@@ -16,18 +16,18 @@ class Client
         $this->httpClient = $httpConfigurator->makeConfiguredHttpClient();
     }
 
-    public static function createRegularClient( string $apiKey, string $endpoint): RegularClient
+    public static function createRegularClient(string $apiKey): RegularClient
     {
-        return new RegularClient(new HttpConfigurator($apiKey, $endpoint));
+        return new RegularClient(new HttpConfigurator($apiKey));
     }
 
-    public static function createEnterpriseClient(string $apiKey, string $endpoint): EnterpriseClient
+    public static function createEnterpriseClient(string $apiKey): EnterpriseClient
     {
-        return new EnterpriseClient(new HttpConfigurator($apiKey, $endpoint));
+        return new EnterpriseClient(new HttpConfigurator($apiKey));
     }
 
-    public static function createCorporateClient(string $apiKey, string $endpoint): CorporateClient
+    public static function createCorporateClient(string $apiKey): CorporateClient
     {
-        return new CorporateClient(new HttpConfigurator($apiKey, $endpoint));
+        return new CorporateClient(new HttpConfigurator($apiKey));
     }
 }

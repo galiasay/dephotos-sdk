@@ -16,13 +16,13 @@ class AddToLightboxRequest implements RequestInterface
     private $lightboxId;
 
     /** @var array */
-    private $mediaIds;
+    private $itemIds;
 
-    public function __construct(string $sessionId, int $lightboxId, array $mediaIds)
+    public function __construct(string $sessionId, int $lightboxId, array $itemIds)
     {
         $this->sessionId = $sessionId;
         $this->lightboxId = $lightboxId;
-        $this->mediaIds = $mediaIds;
+        $this->itemIds = $itemIds;
     }
 
     public function getSessionId(): string
@@ -35,9 +35,9 @@ class AddToLightboxRequest implements RequestInterface
         return $this->lightboxId;
     }
 
-    public function getMediaIds(): array
+    public function getItemIds(): array
     {
-        return $this->mediaIds;
+        return $this->itemIds;
     }
 
     public function toArray(): array
@@ -46,7 +46,7 @@ class AddToLightboxRequest implements RequestInterface
             'dp_command' => self::COMMAND_NAME,
             'dp_session_id' => $this->getSessionId(),
             'dp_lightbox_id' => $this->getLightboxId(),
-            'dp_media_id' => $this->getMediaIds(),
+            'dp_media_id' => $this->getItemIds(),
         ];
     }
 }

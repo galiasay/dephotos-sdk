@@ -10,6 +10,8 @@ use GuzzleHttp\Client as GuzzleHttpClient;
 
 class HttpConfigurator
 {
+    private const API_ENDPOINT = 'https://api.depositphotos.com';
+
     /** @var string */
     private $apiKey;
 
@@ -19,10 +21,10 @@ class HttpConfigurator
     /** @var null|ClientInterface */
     private $httpClient;
 
-    public function __construct(string $apiKey, string $endpoint, ?ClientInterface $httpClient = null)
+    public function __construct(string $apiKey, ?ClientInterface $httpClient = null, ?string $endpoint = null)
     {
         $this->apiKey = $apiKey;
-        $this->endpoint = $endpoint;
+        $this->endpoint = $endpoint ?? self::API_ENDPOINT;
         $this->httpClient = $httpClient;
     }
 

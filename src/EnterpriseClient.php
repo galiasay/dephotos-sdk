@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace Depositphotos\SDK;
 
+use Depositphotos\SDK\Resource\Common\Generic\GenericResource;
+use Depositphotos\SDK\Resource\Common\Search\SearchResource;
 use Depositphotos\SDK\Resource\Enterprise\Item\ItemResource;
 use Depositphotos\SDK\Resource\Enterprise\License\LicenseResource;
 use Depositphotos\SDK\Resource\Enterprise\Statistics\StatisticsResource;
@@ -12,6 +14,11 @@ use Depositphotos\SDK\Resource\Enterprise\Purchase\PurchaseResource;
 
 class EnterpriseClient extends Client
 {
+    public function generic(): GenericResource
+    {
+        return new GenericResource($this->httpClient);
+    }
+
     public function item(): ItemResource
     {
         return new ItemResource($this->httpClient);
@@ -35,6 +42,11 @@ class EnterpriseClient extends Client
     public function purchase(): PurchaseResource
     {
         return new PurchaseResource($this->httpClient);
+    }
+
+    public function search(): SearchResource
+    {
+        return new SearchResource($this->httpClient);
     }
 
     public function statistics(): StatisticsResource

@@ -17,7 +17,7 @@ class GetCreditStatusResponse extends ResponseObject
         return (int) $this->getProperty('subscriptionAmount');
     }
 
-    public function getInvoiceAmountO(): int
+    public function getInvoiceAmount(): int
     {
         return (int) $this->getProperty('invoiceAmount');
     }

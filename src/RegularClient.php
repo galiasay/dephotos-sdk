@@ -3,12 +3,12 @@ declare(strict_types=1);
 
 namespace Depositphotos\SDK;
 
-use Depositphotos\SDK\Resource\Generic\GenericResource;
+use Depositphotos\SDK\Resource\Common\Generic\GenericResource;
 use Depositphotos\SDK\Resource\Regular\Item\ItemResource;
 use Depositphotos\SDK\Resource\Regular\Lightbox\LightboxResource;
 use Depositphotos\SDK\Resource\Regular\Legals\LegalsResource;
 use Depositphotos\SDK\Resource\Regular\Purchase\PurchaseResource;
-use Depositphotos\SDK\Resource\Search\SearchResource;
+use Depositphotos\SDK\Resource\Common\Search\SearchResource;
 use Depositphotos\SDK\Resource\Regular\Tools\ToolsResource;
 use Depositphotos\SDK\Resource\Regular\User\UserResource;
 

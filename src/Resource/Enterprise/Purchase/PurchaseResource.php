@@ -9,7 +9,7 @@ use Depositphotos\SDK\Resource\Enterprise\Purchase\Request\LicenseItemRequest;
 use Depositphotos\SDK\Resource\Enterprise\Purchase\Response\GetDownloadUrlResponse;
 use Depositphotos\SDK\Resource\Enterprise\Purchase\Response\GetLicensedItemsResponse;
 use Depositphotos\SDK\Resource\Enterprise\Purchase\Response\LicenseItemResponse;
-use Depositphotos\SDK\Resource\Purchase\PurchaseResource as BasePurchaseResource;
+use Depositphotos\SDK\Resource\Common\Purchase\PurchaseResource as BasePurchaseResource;
 
 class PurchaseResource extends BasePurchaseResource
 {
