@@ -14,6 +14,6 @@ class LoginResponse extends ResponseObject
 
     public function getUserId(): int
     {
-        return (int) $this->getProperty('userid');
+        return (int) $this->getProperty('userId');
     }
 }

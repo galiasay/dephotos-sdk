@@ -15,4 +15,9 @@ class GetSubAccountPurchasesResponse extends ResponseObject
     {
         return (array) $this->getProperty('purchases', Purchase::class);
     }
+
+    public function getCount(): int
+    {
+        return (int) $this->getProperty('count');
+    }
 }

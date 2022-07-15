@@ -15,144 +15,64 @@ class ItemResourceTest extends BaseTestCase
 
     public function testGetFilesCount(): void
     {
-        $requestData = [
-            'dp_command' => 'getFilesCount',
-            'dp_type' => 'image',
-        ];
+        $this->loadFixtures('commands.regular.item.getFilesCount');
 
-        $responseData = [
-            'type' => 'success',
-            'itemType' => 'image',
-            'count' => 145964221,
-            'contributorsCount' => 93290,
-            'freeItemsCount' => 64701,
-            'curatedItemsCount' => 573483,
-            'customers' => 13460684,
-            'free' => [
-                'total' => 64701,
-                'image' => 22340,
-                'vector' => 14252,
-                'video' => 16097,
-                'editorial' => 12012,
-            ]
-        ];
+        $resource = new ItemResource($this->createHttpClient());
+        $result = $resource->getFilesCount(new GetFilesCountRequest($this->getFixture('request.dp_type')));
 
-        $resource = new ItemResource($this->createHttpClient($requestData, $responseData));
-        $result = $resource->getFilesCount(new GetFilesCountRequest($requestData['dp_type']));
-
-        $this->assertEquals($responseData['itemType'], $result->getItemType());
-        $this->assertEquals($responseData['count'], $result->getCount());
-        $this->assertEquals($responseData['contributorsCount'], $result->getContributorsCount());
-        $this->assertEquals($responseData['freeItemsCount'], $result->getFreeItemsCount());
-        $this->assertEquals($responseData['curatedItemsCount'], $result->getCuratedItemsCount());
-        $this->assertEquals($responseData['customers'], $result->getCustomers());
-        $this->assertEquals($responseData['free']['total'], $result->getFree()->getTotal());
-        $this->assertEquals($responseData['free']['image'], $result->getFree()->getImage());
-        $this->assertEquals($responseData['free']['vector'], $result->getFree()->getVector());
-        $this->assertEquals($responseData['free']['video'], $result->getFree()->getVideo());
-        $this->assertEquals($responseData['free']['editorial'], $result->getFree()->getEditorial());
+        $this->assertEquals($this->getFixture('response.itemType'), $result->getItemType());
+        $this->assertEquals($this->getFixture('response.count'), $result->getCount());
+        $this->assertEquals($this->getFixture('response.contributorsCount'), $result->getContributorsCount());
+        $this->assertEquals($this->getFixture('response.freeItemsCount'), $result->getFreeItemsCount());
+        $this->assertEquals($this->getFixture('response.curatedItemsCount'), $result->getCuratedItemsCount());
+        $this->assertEquals($this->getFixture('response.customers'), $result->getCustomers());
+        $this->assertEquals($this->getFixture('response.free')['total'], $result->getFree()->getTotal());
+        $this->assertEquals($this->getFixture('response.free')['image'], $result->getFree()->getImage());
+        $this->assertEquals($this->getFixture('response.free')['vector'], $result->getFree()->getVector());
+        $this->assertEquals($this->getFixture('response.free')['video'], $result->getFree()->getVideo());
+        $this->assertEquals($this->getFixture('response.free')['editorial'], $result->getFree()->getEditorial());
     }
 
     public function testGetFreeFiles(): void
     {
-        $requestData = [
-            'dp_command' => 'getFreeFiles',
-            'dp_limit' => 2,
-            'dp_offset' => 0,
-            'dp_shuffle' => false,
-            'dp_type' => 'image',
-        ];
+        $this->loadFixtures('commands.regular.item.getFreeFiles');
 
-        $responseData = [
-            'type' => 'success',
-            'items' => [
-                [
-                    'alt' => null,
-                    'title' => 'Footpath',
-                    'description' => 'Winter footpath in city. A snow landscape',
-                    'filename' => 'stock-photo-footpath',
-                    'thumbSource' => 'static3.depositphotos.com',
-                    'id' => 6542,
-                    'blocked' => false,
-                    'height' => 3300,
-                    'width' => 2208,
-                    'type' => 'image',
-                    'sellerId' => 1431,
-                    'sellerName' => 'Valeriy_Al',
-                    'editorial' => false,
-                    'mp' => 7.29,
-                    'uploadTimestamp' => 1258050026,
-                    'nudity' => false,
-                    'royaltyModel' => 'cpa',
-                    'thumbUrl' => 'https://static3.depositphotos.com/thumbs/1431/image/103/6542/thumb_110.jpg?forcejpeg=true',
-                    'thumbBigUrl' => 'https://static3.depositphotos.com/1431/103/i/950/6542-stock-photo-footpath.jpg?forcejpeg=true',
-                    'thumb_medium' => 'https://static3.depositphotos.com/thumbs/1431/image/103/6542/thumb_170.jpg?forcejpeg=true',
-                    'thumb_huge' => 'https://static3.depositphotos.com/thumbs/1431/image/103/6542/thumb_450.jpg?forcejpeg=true',
-                    'thumb_max' => 'https://static3.depositphotos.com/1431/103/i/950/depositphotos_6542-stock-photo-footpath.jpg?forcejpeg=true',
-                ],
-                [
-                    'alt' => null,
-                    'title' => 'Phone, glasses, pencil',
-                    'description' => 'Office attributes on a table',
-                    'filename' => 'stock-photo-phone-glasses-pencil',
-                    'thumbSource' => 'static3.depositphotos.com',
-                    'id' => 54213,
-                    'blocked' => false,
-                    'height' => 2427,
-                    'width' => 3626,
-                    'type' => 'image',
-                    'sellerId' => 154,
-                    'sellerName' => 'Valeriy_Al',
-                    'editorial' => false,
-                    'mp' => 8.8,
-                    'uploadTimestamp' => 1258051209,
-                    'nudity' => false,
-                    'royaltyModel' => 'cpa',
-                    'thumbUrl' => 'https://static3.depositphotos.com/thumbs/154/image/103/54213/thumb_110.jpg?forcejpeg=true',
-                    'thumbBigUrl' => 'https://static3.depositphotos.com/154/103/i/950/54213-stock-photo-phone-glasses-pencil.jpg?forcejpeg=true',
-                    'thumb_medium' => 'https://static3.depositphotos.com/thumbs/154/image/103/54213/thumb_170.jpg?forcejpeg=true',
-                    'thumb_huge' => 'https://static3.depositphotos.com/thumbs/154/image/103/54213/thumb_450.jpg?forcejpeg=true',
-                    'thumb_max' => 'https://static3.depositphotos.com/154/103/i/950/depositphotos_54213-stock-photo-phone-glasses-pencil.jpg?forcejpeg=true',
-                ],
-            ],
-            'count' => 20,
-        ];
-
-        $resource = new ItemResource($this->createHttpClient($requestData, $responseData));
+        $resource = new ItemResource($this->createHttpClient());
         $result = $resource->getFreeFiles(new GetFreeFilesRequest(
-            $requestData['dp_limit'],
-            $requestData['dp_offset'],
-            $requestData['dp_shuffle'],
-            $requestData['dp_type']
+            $this->getFixture('request.dp_limit'),
+            $this->getFixture('request.dp_offset'),
+            $this->getFixture('request.dp_shuffle'),
+            $this->getFixture('request.dp_type')
         ));
 
-        $this->assertEquals($responseData['count'], $result->getCount());
+        $this->assertEquals($this->getFixture('response.count'), $result->getCount());
 
         foreach ($result->getItems() as $key => $item) {
-            $this->assertEquals($responseData['items'][$key], [
-                'alt' => $item->getAlt(),
-                'title' => $item->getTitle(),
-                'description' => $item->getDescription(),
-                'filename' => $item->getFilename(),
-                'thumbSource' => $item->getThumbSource(),
-                'id' => $item->getId(),
-                'blocked' => $item->isBlocked(),
-                'height' => $item->getHeight(),
-                'width' => $item->getWidth(),
-                'type' => $item->getType(),
-                'sellerId' => $item->getSellerId(),
-                'sellerName' => $item->getSellerName(),
-                'editorial' => $item->isEditorial(),
-                'mp' => $item->getMp(),
-                'uploadTimestamp' => $item->getUploadDate()->getTimestamp(),
-                'nudity' => $item->isNudity(),
-                'royaltyModel' => $item->getRoyaltyModel(),
-                'thumbUrl' => $item->getThumbnail(),
-                'thumbBigUrl' => $item->getBigThumbnail(),
-                'thumb_medium' => $item->getMediumThumbnail(),
-                'thumb_huge' => $item->getHugeThumbnail(),
-                'thumb_max' => $item->getMaxThumbnail(),
-            ]);
+            $fixture = $this->getFixture('response.items')[$key];
+
+            $this->assertEquals($fixture['id'], $item->getId());
+            $this->assertEquals($fixture['blocked'], $item->isBlocked());
+            $this->assertEquals($fixture['height'], $item->getHeight());
+            $this->assertEquals($fixture['width'], $item->getWidth());
+            $this->assertEquals($fixture['sellerId'], $item->getSellerId());
+            $this->assertEquals($fixture['sellerName'], $item->getSellerName());
+            $this->assertEquals($fixture['editorial'], $item->isEditorial());
+            $this->assertEquals($fixture['mp'], $item->getMp());
+            $this->assertEquals($fixture['uploadTimestamp'], $item->getUploadDate()->getTimestamp());
+            $this->assertEquals($fixture['nudity'], $item->isNudity());
+            $this->assertEquals($fixture['status'], $item->getStatus());
+            $this->assertEquals($fixture['royaltyModel'], $item->getRoyaltyModel());
+            $this->assertEquals($fixture['alt'], $item->getAlt());
+            $this->assertEquals($fixture['title'], $item->getTitle());
+            $this->assertEquals($fixture['description'], $item->getDescription());
+            $this->assertEquals($fixture['filename'], $item->getFilename());
+            $this->assertEquals($fixture['thumbSource'], $item->getThumbSource());
+            $this->assertEquals($fixture['type'], $item->getType());
+            $this->assertEquals($fixture['thumbUrl'], $item->getThumbnail());
+            $this->assertEquals($fixture['thumbBigUrl'], $item->getBigThumbnail());
+            $this->assertEquals($fixture['thumb_medium'], $item->getMediumThumbnail());
+            $this->assertEquals($fixture['thumb_huge'], $item->getHugeThumbnail());
+            $this->assertEquals($fixture['thumb_max'], $item->getMaxThumbnail());
         }
     }
 }

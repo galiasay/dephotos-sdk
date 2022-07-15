@@ -16,7 +16,7 @@ class SetPermissionsResponse extends ResponseObject
         $result = [];
 
         foreach ($this->data['permissions'] ?? [] as $resourceData => $actions) {
-            [$resourceName, $resourceId] = explode(':', $resourceData);
+            [$resourceName, $resourceId] = array_pad(explode(':', $resourceData), 2, null);
 
             $result[] = new Permission((int) $resourceId, (string) $resourceName, (array) $actions);
         }

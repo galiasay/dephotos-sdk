@@ -4,11 +4,9 @@ declare(strict_types=1);
 namespace Depositphotos\SDK\Resource\Enterprise\Invoice;
 
 use Depositphotos\SDK\Resource\Enterprise\Invoice\Request\CreateInvoiceRequest;
-use Depositphotos\SDK\Resource\Enterprise\Invoice\Request\GetInvoiceCountRequest;
 use Depositphotos\SDK\Resource\Enterprise\Invoice\Request\GetInvoiceListRequest;
 use Depositphotos\SDK\Resource\Enterprise\Invoice\Request\GetInvoiceRequest;
 use Depositphotos\SDK\Resource\Enterprise\Invoice\Response\CreateInvoiceResponse;
-use Depositphotos\SDK\Resource\Enterprise\Invoice\Response\GetInvoiceCountResponse;
 use Depositphotos\SDK\Resource\Enterprise\Invoice\Response\GetInvoiceListResponse;
 use Depositphotos\SDK\Resource\Enterprise\Invoice\Response\GetInvoiceResponse;
 use Depositphotos\SDK\Resource\Resource;
@@ -27,13 +25,6 @@ class InvoiceResource extends Resource
         $httpResponse = $this->send($request);
 
         return new GetInvoiceResponse($this->convertHttpResponseToArray($httpResponse)['invoice'] ?? []);
-    }
-
-    public function getInvoiceCount(GetInvoiceCountRequest $request): GetInvoiceCountResponse
-    {
-        $httpResponse = $this->send($request);
-
-        return new GetInvoiceCountResponse($this->convertHttpResponseToArray($httpResponse));
     }
 
     public function getInvoiceList(GetInvoiceListRequest $request): GetInvoiceListResponse

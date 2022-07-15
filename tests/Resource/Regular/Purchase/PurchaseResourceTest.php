@@ -15,71 +15,40 @@ class PurchaseResourceTest extends BaseTestCase
 
     public function testGetMedia(): void
     {
-        $requestData = [
-            'dp_command' => 'getMedia',
-            'dp_session_id' => 'e9753fbbd7454ea001b7619ce1e20fe5',
-            'dp_media_id' => 1,
-            'dp_media_option' => 'm',
-            'dp_media_license' => 'standard',
-            'dp_subscription_id' => null,
-        ];
+        $this->loadFixtures('commands.regular.purchase.getMedia');
 
-        $responseData = [
-            'type' => 'success',
-            'downloadLink' => 'https://download....81097b25',
-            'licenseId' => 182395342,
-            'method' => 'credits',
-            'option' => 'm',
-            'itemId' => 1,
-        ];
-
-        $resource = new PurchaseResource($this->createHttpClient($requestData, $responseData));
+        $resource = new PurchaseResource($this->createHttpClient());
         $result = $resource->getMedia(new GetMediaRequest(
-            $requestData['dp_session_id'],
-            $requestData['dp_media_id'],
-            $requestData['dp_media_option'],
-            $requestData['dp_media_license'],
-            $requestData['dp_subscription_id']
+            $this->getFixture('request.dp_session_id'),
+            $this->getFixture('request.dp_media_id'),
+            $this->getFixture('request.dp_media_option'),
+            $this->getFixture('request.dp_media_license'),
+            $this->getFixture('request.dp_subscription_id')
         ));
 
-        $this->assertEquals($responseData['downloadLink'], $result->getDownloadLink());
-        $this->assertEquals($responseData['licenseId'], $result->getLicenseId());
-        $this->assertEquals($responseData['method'], $result->getMethod());
-        $this->assertEquals($responseData['option'], $result->getSize());
-        $this->assertEquals($responseData['itemId'], $result->getItemId());
+        $this->assertEquals($this->getFixture('response.downloadLink'), $result->getDownloadLink());
+        $this->assertEquals($this->getFixture('response.licenseId'), $result->getLicenseId());
+        $this->assertEquals($this->getFixture('response.method'), $result->getMethod());
+        $this->assertEquals($this->getFixture('response.option'), $result->getSize());
+        $this->assertEquals($this->getFixture('response.itemId'), $result->getItemId());
     }
 
     public function testReDownload(): void
     {
-        $requestData = [
-            'dp_command' => 'reDownload',
-            'dp_session_id' => 'e9753fbbd7454ea001b7619ce1e20fe5',
-            'dp_license_id' => 1,
-            'dp_subaccount_id' => null,
-            'dp_subaccount_license_id' => null,
-        ];
+        $this->loadFixtures('commands.regular.purchase.reDownload');
 
-        $responseData = [
-            'type' => 'success',
-            'downloadLink' => 'https://download....81097b25',
-            'licenseId' => 182395342,
-            'method' => 'credits',
-            'option' => 'm',
-            'itemId' => 1,
-        ];
-
-        $resource = new PurchaseResource($this->createHttpClient($requestData, $responseData));
+        $resource = new PurchaseResource($this->createHttpClient());
         $result = $resource->reDownload(new ReDownloadRequest(
-            $requestData['dp_session_id'],
-            $requestData['dp_license_id'],
-            $requestData['dp_subaccount_id'],
-            $requestData['dp_subaccount_license_id']
+            $this->getFixture('request.dp_session_id'),
+            $this->getFixture('request.dp_license_id'),
+            $this->getFixture('request.dp_subaccount_id'),
+            $this->getFixture('request.dp_subaccount_license_id')
         ));
 
-        $this->assertEquals($responseData['downloadLink'], $result->getDownloadLink());
-        $this->assertEquals($responseData['licenseId'], $result->getLicenseId());
-        $this->assertEquals($responseData['method'], $result->getMethod());
-        $this->assertEquals($responseData['option'], $result->getSize());
-        $this->assertEquals($responseData['itemId'], $result->getItemId());
+        $this->assertEquals($this->getFixture('response.downloadLink'), $result->getDownloadLink());
+        $this->assertEquals($this->getFixture('response.licenseId'), $result->getLicenseId());
+        $this->assertEquals($this->getFixture('response.method'), $result->getMethod());
+        $this->assertEquals($this->getFixture('response.option'), $result->getSize());
+        $this->assertEquals($this->getFixture('response.itemId'), $result->getItemId());
     }
 }

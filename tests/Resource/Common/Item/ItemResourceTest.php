@@ -14,21 +14,12 @@ class ItemResourceTest extends BaseTestCase
 
     public function testCheckItemsStatus(): void
     {
-        $requestData = [
-            'dp_command' => 'checkItemsStatus',
-            'dp_ids' => [1, 2, 3],
-        ];
+        $this->loadFixtures('commands.common.item.checkItemsStatus');
 
-        $responseData = [
-            'type' => 'success',
-            'active' => [1, 2],
-            'inactive' => [3],
-        ];
+        $resource = new ItemResource($this->createHttpClient());
+        $result = $resource->checkItemsStatus(new CheckItemsStatusRequest($this->getFixture('request.dp_ids')));
 
-        $resource = new ItemResource($this->createHttpClient($requestData, $responseData));
-        $result = $resource->checkItemsStatus(new CheckItemsStatusRequest($requestData['dp_ids']));
-
-        $this->assertEquals($responseData['active'], $result->getActive());
-        $this->assertEquals($responseData['inactive'], $result->getInactive());
+        $this->assertEquals($this->getFixture('response.active'), $result->getActive());
+        $this->assertEquals($this->getFixture('response.inactive'), $result->getInactive());
     }
 }

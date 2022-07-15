@@ -15,51 +15,24 @@ class LegalsResourceTest extends BaseTestCase
 
     public function testGetLegalsList(): void
     {
-        $requestData = [
-            'dp_command' => 'getLegalsList',
-        ];
+        $this->loadFixtures('commands.regular.legals.getLegalsList');
 
-        $responseData = [
-            'type' => 'success',
-            'legals' => [
-                'terms-of-use',
-                'privacy-policy',
-                'dmca',
-                'member-agreement-text',
-                'content-license',
-                'standard-license',
-                'extended-license',
-                'comparison',
-                'subscription-agreement',
-                'cancellation-policy'
-            ],
-        ];
-
-        $resource = new LegalsResource($this->createHttpClient($requestData, $responseData));
+        $resource = new LegalsResource($this->createHttpClient());
         $result = $resource->getLegalsList(new GetLegalsListRequest());
 
-        $this->assertEquals($responseData['legals'], $result->getLegals());
+        $this->assertEquals($this->getFixture('response.legals'), $result->getLegals());
     }
 
     public function testGetLegalDocument(): void
     {
-        $requestData = [
-            'dp_command' => 'getLegalDocument',
-            'dp_legal_name' => 'terms-of-use',
-            'dp_lang' => null,
-        ];
+        $this->loadFixtures('commands.regular.legals.getLegalDocument');
 
-        $responseData = [
-            'type' => 'success',
-            'document' => 'Document contents',
-        ];
-
-        $resource = new LegalsResource($this->createHttpClient($requestData, $responseData));
+        $resource = new LegalsResource($this->createHttpClient());
         $result = $resource->getLegalDocument(new GetLegalDocumentRequest(
-            $requestData['dp_legal_name'],
-            $requestData['dp_lang']
+            $this->getFixture('request.dp_legal_name'),
+            $this->getFixture('request.dp_lang')
         ));
 
-        $this->assertEquals($responseData['document'], $result->getDocument());
+        $this->assertEquals($this->getFixture('response.document'), $result->getDocument());
     }
 }
