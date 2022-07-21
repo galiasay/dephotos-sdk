@@ -78,16 +78,21 @@ class PurchaseResourceTest extends BaseTestCase
         $this->loadFixtures('commands.enterprise.purchase.getLicensedItems');
 
         $resource = new PurchaseResource($this->createHttpClient());
-        $result = $resource->getLicensedItems(new GetLicensedItemsRequest(
+        $request = new GetLicensedItemsRequest(
             $this->getFixture('request.dp_session_id'),
             $this->getFixture('request.dp_limit'),
-            $this->getFixture('request.dp_offset'),
-            $this->getFixture('request.dp_type'),
-            $this->getFixture('request.dp_user_id'),
-            $this->getFixture('request.dp_group_id'),
-            new \DateTime($this->getFixture('request.dp_date_start')),
-            new \DateTime($this->getFixture('request.dp_date_end'))
-        ));
+            $this->getFixture('request.dp_offset')
+        );
+        $request
+            ->setType($this->getFixture('request.dp_type'))
+            ->setUserId($this->getFixture('request.dp_user_id'))
+            ->setGroupId($this->getFixture('request.dp_group_id'))
+            ->setStartDate(new \DateTime($this->getFixture('request.dp_date_start')))
+            ->setEndDate(new \DateTime($this->getFixture('request.dp_date_end')))
+            ->setItemIds($this->getFixture('request.dp_item_ids'))
+            ->setMethodIds($this->getFixture('request.dp_method_ids'));
+
+        $result = $resource->getLicensedItems($request);
 
         $this->assertEquals($this->getFixture('response.count'), $result->getCount());
 

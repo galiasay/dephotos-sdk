@@ -20,12 +20,6 @@ class ErrorHandler implements MiddlewareInterface
     {
         try {
             $response = $next($request);
-
-            if ($this->isSuccess($response)) {
-                return $response;
-            }
-
-            throw ClientException::create($request, $response);
         } catch (BadResponseException $e) {
             throw ClientException::create($e->getRequest(), $e->getResponse(), $e);
         } catch (RequestExceptionInterface $e) {
@@ -33,6 +27,12 @@ class ErrorHandler implements MiddlewareInterface
         } catch (Exception $e) {
             throw ClientException::create($request, null, $e);
         }
+
+        if ($this->isSuccess($response)) {
+            return $response;
+        }
+
+        throw ClientException::create($request, $response);
     }
 
     private function isSuccess(ResponseInterface $response): bool

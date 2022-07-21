@@ -8,7 +8,14 @@
     "dp_user_id": null,
     "dp_group_id": null,
     "dp_date_start": "2022-01-01 00:00:00",
-    "dp_date_end": "2022-01-31 23:59:59"
+    "dp_date_end": "2022-01-31 23:59:59",
+    "dp_item_ids": [
+      12323,
+      5432122
+    ],
+    "dp_method_ids": [
+      4331
+    ]
   },
   "response": {
     "type": "success",
