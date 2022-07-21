@@ -44,17 +44,17 @@ class ClientException extends Exception implements ClientExceptionInterface
         $errorCode = $errorData['errorcode'] ?? 0;
 
         switch ($errorData['exception'] ?? null) {
-            case 'EAPI\\EIllegalSession':
+            case 'EAPI\EIllegalSession':
             case 'EIllegalSession':
                 $exceptionClass = InvalidSessionException::class;
                 break;
-            case 'EAPI\\EIllegalApiKey':
+            case 'EAPI\EIllegalApiKey':
                 $exceptionClass = InvalidApiKeyException::class;
                 break;
-            case 'EUser\\Authentication':
+            case 'EUser\Authentication':
                 $exceptionClass = AuthenticationException::class;
                 break;
-            case 'EInternal\\InvalidParam':
+            case 'EInternal\InvalidParam':
             case 'EApi\EInvalidParam':
                 $exceptionClass = InvalidParamException::class;
                 break;

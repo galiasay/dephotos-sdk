@@ -10,7 +10,7 @@ class User extends ResponseObject
 {
     public function getId(): int
     {
-        return (int) $this->getProperty('userId') ?: (int) $this->getProperty('id');
+        return (int) $this->getProperty('userId');
     }
 
     public function getUsername(): string
@@ -73,9 +73,9 @@ class User extends ResponseObject
         return (array) $this->getProperty('enterpriseLite');
     }
 
-    public function getRegistered(): ?DateTimeInterface
+    public function getRegistered(): DateTimeInterface
     {
-        return $this->getDateTimeOrNull('registered');
+        return $this->getDateTime('registered');
     }
 
     public function getEmail(): string

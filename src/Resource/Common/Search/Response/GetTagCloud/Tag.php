@@ -27,9 +27,14 @@ class Tag extends ResponseObject
         return (string) $this->getProperty('type');
     }
 
-    public function getDate(): \DateTimeInterface
+    public function getFrom(): ?\DateTimeInterface
     {
-        return $this->getDateTime('date');
+        return $this->getDateTimeOrNull('date_from');
+    }
+
+    public function getTo(): ?\DateTimeInterface
+    {
+        return $this->getDateTimeOrNull('date_to');
     }
 
     public function getRate(): int

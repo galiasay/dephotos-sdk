@@ -8,6 +8,11 @@ use Depositphotos\SDK\Resource\Enterprise\User\Response\Common\Stats;
 
 class UpdateUserResponse extends User
 {
+    public function getId(): int
+    {
+        return (int) $this->getProperty('id');
+    }
+
     public function isEnabled(): bool
     {
         return (bool) $this->getProperty('enterpriseEnabled');

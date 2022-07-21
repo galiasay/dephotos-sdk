@@ -215,28 +215,4 @@ class Item extends ResponseObject
     {
         return (array) $this->getProperty('model_release_ids');
     }
-
-    /**
-     * @return int[]
-     */
-    public function getSimilar(): array
-    {
-        return (array) $this->getProperty('similar');
-    }
-
-    /**
-     * @return int[]
-     */
-    public function getSeries(): array
-    {
-        return (array) $this->getProperty('series');
-    }
-
-    /**
-     * @return int[]
-     */
-    public function getSameModel(): array
-    {
-        return (array) $this->getProperty('same_model');
-    }
 }

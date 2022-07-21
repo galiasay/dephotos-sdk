@@ -1,4 +1,4 @@
-# PHP Depositphotos SDK
+# Depositphotos PHP SDK
 
 ## Requirements
 
@@ -10,7 +10,7 @@
 The Depositphotos PHP SDK can be installed through Composer.
 
 ```bash
-composer require depositphotos/sdk
+composer require depositphotos/php-sdk
 ```
 
 ## Usage

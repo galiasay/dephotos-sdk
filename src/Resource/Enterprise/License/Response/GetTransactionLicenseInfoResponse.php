@@ -36,8 +36,10 @@ class GetTransactionLicenseInfoResponse extends ResponseObject
         return $this->getProperty('to', LegalInfo::class);
     }
 
-    public function getTransferredTo(): LegalInfo
+    public function getTransferredTo(): ?LegalInfo
     {
-        return $this->getProperty('transferredTo', LegalInfo::class);
+        $legalInfo = $this->getProperty('transferredTo', LegalInfo::class);
+
+        return $legalInfo instanceof LegalInfo ? $legalInfo : null;
     }
 }

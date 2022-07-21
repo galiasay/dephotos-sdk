@@ -92,6 +92,11 @@ class Item extends ResponseObject
         return (bool) $this->getProperty('nudity');
     }
 
+    public function getStatus(): string
+    {
+        return (string) $this->getProperty('status');
+    }
+
     public function getRoyaltyModel(): string
     {
         return (string) $this->getProperty('royaltyModel');
