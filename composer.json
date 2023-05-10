@@ -22,6 +22,7 @@
             "Depositphotos\\SDK\\Tests\\": "tests/"
         }
     },
+    "minimum-stability": "dev",
     "scripts":{
         "test": "vendor/bin/phpunit tests",
         "analyse": "vendor/bin/phpstan analyse src -c phpstan.neon"
