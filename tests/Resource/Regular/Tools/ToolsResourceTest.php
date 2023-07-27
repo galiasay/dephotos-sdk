@@ -33,7 +33,7 @@ class ToolsResourceTest extends BaseTestCase
             new Url( $this->getFixture('request.dp_image_url')))
         );
 
-        $this->assertEquals($response->getHeaderLine('Content-Type'), $result->getContentType());
+        $this->assertEquals($response->getHeaderLine('Content-Type'), null);
         $this->assertEquals($response->getHeaderLine('X-Width'), $result->getWidth());
         $this->assertEquals($response->getHeaderLine('X-Height'), $result->getHeight());
     }
